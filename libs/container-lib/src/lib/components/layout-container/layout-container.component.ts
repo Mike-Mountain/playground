@@ -9,7 +9,7 @@ import {animate, group, query, stagger, style, transition, trigger} from "@angul
     trigger('toggleSidebar', [
       transition(':enter', [
         query('.sidebar', [
-          style({left: '-50%'}),
+          style({left: '-65%'}),
           animate('300ms ease'),
           style({left: 0})
         ]),
@@ -18,7 +18,7 @@ import {animate, group, query, stagger, style, transition, trigger} from "@angul
         group([
           query('.sidebar', [
             animate('300ms ease'),
-            style({left: '-50%'})
+            style({left: '-65%'})
           ]),
           animate('300ms ease', style({opacity: 0}))
         ]),

@@ -6,6 +6,8 @@ $warning: #fc9d03;
 $danger: #bf0000;
 $background: #292d3e;
 $container: #424864;
+$sidebar: #3c415c;
+$containerValues: 66, 72, 100;
 
 :root {
   --primary: #{$primary};
@@ -16,4 +18,6 @@ $container: #424864;
   --danger: #{$danger};
   --background: #{$background};
   --container: #{$container};
+  --sidebar: #{$sidebar};
+  --containerValues: #{$containerValues};
 }
