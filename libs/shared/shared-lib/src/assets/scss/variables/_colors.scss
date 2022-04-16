@@ -1,0 +1,19 @@
+$primary: #f6c16e;
+$link: #0099bf;
+$info: #00a5ff;
+$success: #00bf00;
+$warning: #fc9d03;
+$danger: #bf0000;
+$background: #292d3e;
+$container: #424864;
+
+:root {
+  --primary: #{$primary};
+  --link: #{$link};
+  --info: #{$info};
+  --success: #{$success};
+  --warning: #{$warning};
+  --danger: #{$danger};
+  --background: #{$background};
+  --container: #{$container};
+}
