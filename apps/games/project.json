@@ -1,27 +1,24 @@
 {
   "projectType": "application",
-  "root": "apps/container",
-  "sourceRoot": "apps/container/src",
+  "root": "apps/games",
+  "sourceRoot": "apps/games/src",
   "prefix": "playground",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/container",
-        "index": "apps/container/src/index.html",
-        "main": "apps/container/src/main.ts",
-        "polyfills": "apps/container/src/polyfills.ts",
-        "tsConfig": "apps/container/tsconfig.app.json",
+        "outputPath": "dist/apps/games",
+        "index": "apps/games/src/index.html",
+        "main": "apps/games/src/main.ts",
+        "polyfills": "apps/games/src/polyfills.ts",
+        "tsConfig": "apps/games/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/container/src/favicon.ico",
-          "apps/container/src/assets"
-        ],
-        "styles": ["apps/container/src/styles.scss"],
+        "assets": ["apps/games/src/favicon.ico", "apps/games/src/assets"],
+        "styles": ["apps/games/src/styles.scss"],
         "scripts": [],
         "customWebpackConfig": {
-          "path": "apps/container/webpack.config.js"
+          "path": "apps/games/webpack.config.js"
         }
       },
       "configurations": {
@@ -40,13 +37,13 @@
           ],
           "fileReplacements": [
             {
-              "replace": "apps/container/src/environments/environment.ts",
-              "with": "apps/container/src/environments/environment.prod.ts"
+              "replace": "apps/games/src/environments/environment.ts",
+              "with": "apps/games/src/environments/environment.prod.ts"
             }
           ],
           "outputHashing": "all",
           "customWebpackConfig": {
-            "path": "apps/container/webpack.prod.config.js"
+            "path": "apps/games/webpack.prod.config.js"
           }
         },
         "development": {
@@ -64,45 +61,39 @@
       "executor": "@nrwl/angular:webpack-server",
       "configurations": {
         "production": {
-          "browserTarget": "container:build:production"
+          "browserTarget": "games:build:production"
         },
         "development": {
-          "browserTarget": "container:build:development"
+          "browserTarget": "games:build:development"
         }
       },
       "defaultConfiguration": "development",
       "options": {
-        "port": 4200,
-        "publicHost": "http://localhost:4200"
+        "port": 4201,
+        "publicHost": "http://localhost:4201"
       }
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "container:build"
+        "browserTarget": "games:build"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
         "lintFilePatterns": [
-          "apps/container/src/**/*.ts",
-          "apps/container/src/**/*.html"
+          "apps/games/src/**/*.ts",
+          "apps/games/src/**/*.html"
         ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/container"],
+      "outputs": ["coverage/apps/games"],
       "options": {
-        "jestConfig": "apps/container/jest.config.js",
+        "jestConfig": "apps/games/jest.config.js",
         "passWithNoTests": true
-      }
-    },
-    "serve-mfe": {
-      "executor": "@nrwl/workspace:run-commands",
-      "options": {
-        "commands": ["nx serve games", "nx serve container"]
       }
     }
   },
