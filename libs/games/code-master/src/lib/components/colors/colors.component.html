@@ -1,0 +1,28 @@
+<ng-container *ngIf="game && turn">
+  <ng-container *ngFor="let color of turn.colors">
+    <ng-container *ngIf="!color.selectable">
+      <button
+        class="color-block is-capitalized"
+        [class.active-color-block-shadow]="turn.turnState === turnState.InProgress"
+        [class.inset-color-block-shadow]="turn.turnState === turnState.Complete"
+        [class.color-block-shadow]="turn.turnState === turnState.NotStarted"
+        [ngClass]="color.selectedColor ? 'button-' + color.selectedColor : ''"
+        [disabled]="turn.turnState !== turnState.InProgress"
+        (click)="setSelectable(color, turn)"
+      >
+        {{turn.turnState !== turnState.NotStarted ? color.selectedColor : ''}}
+      </button>
+    </ng-container>
+
+    <ng-container *ngIf="color.selectable">
+      <div class="color-block multi-button">
+        <ng-container *ngFor="let option of game.settings.colorOptions">
+          <button
+            (click)="selectColor(option, color)"
+            [class]="'mini-button button-' + option" *ngIf="option !== 'blank'"
+          ></button>
+        </ng-container>
+      </div>
+    </ng-container>
+  </ng-container>
+</ng-container>

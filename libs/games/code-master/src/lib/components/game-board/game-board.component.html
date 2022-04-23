@@ -1,93 +1,35 @@
 <section class="code-master-game-board" *ngIf="game">
   <div class="win-combination turn">
-    <div class="win-combination-colors">
-      <ng-container *ngFor="let color of game.winCombination">
-        <div
-          class="color-block active win-combination-block flex-center is-capitalized"
-          [ngClass]="game.winState !== winState.InProgress ? 'button-' + color : ''"
-        >
-          {{game.winState !== winState.InProgress ? color : ''}}
-        </div>
-      </ng-container>
-    </div>
+    <cdm-win-combination [game]="game"></cdm-win-combination>
   </div>
   <ng-container *ngFor="let turn of game.turns; let turnIdx = index">
     <div class="turn">
       <div class="flex-center flex-justify-start">
         <p
-          [class.active-turn-number]="turn.turnState === turnState.InProgress"
-          [class.incorrect]="turn.turnState === turnState.Complete && !turn.isWinningTurn"
-          [class.won]="game.winState === winState.Won && turn.isWinningTurn"
-        >{{game.turns.length - turnIdx}}</p>
+          [class.line-number-active]="turn.turnState === turnState.InProgress"
+          [class.line-number-incorrect]="turn.turnState === turnState.Complete && !turn.isWinningTurn"
+          [class.line-number-won]="game.winState === winState.Won && turn.isWinningTurn"
+        >
+          {{game.turns.length - turnIdx}}
+        </p>
       </div>
       <div class="pins">
-        <ng-container *ngFor="let pin of turn.pins">
-          <button
-            [class]="'pin pin-' + pin"
-            [class.inset-pin]="turn.turnState === turnState.Complete"
-            [class.disabled]="turn.turnState === turnState.NotStarted"
-            [disabled]="turn.turnState !== turnState.InProgress"
-            [class.active]="turn.turnState !== turnState.NotStarted"
-          ></button>
-        </ng-container>
+        <cdm-pins [pins]="turn.pins" [state]="turn.turnState"></cdm-pins>
       </div>
       <div class="colors">
-        <ng-container *ngFor="let color of turn.colors">
-          <ng-container *ngIf="!color.selectable">
-            <button
-              class="color-block is-capitalized"
-              [disabled]="turn.turnState !== turnState.InProgress"
-              [class.inset]="turn.turnState === turnState.Complete"
-              [class.active]="turn.turnState !== turnState.NotStarted"
-              [ngClass]="color.selectedColor ? 'button-' + color.selectedColor : ''"
-              (click)="setSelectable(color, turn)"
-            >
-              {{turn.turnState !== turnState.NotStarted ? color.selectedColor : ''}}
-            </button>
-          </ng-container>
-          <ng-container *ngIf="color.selectable">
-            <div class="color-block multi-button">
-              <ng-container *ngFor="let option of game.settings.colorOptions">
-                <button
-                  (click)="selectColor(option, color)"
-                  [class]="'mini-button button-' + option" *ngIf="option !== 'blank'"
-                ></button>
-              </ng-container>
-            </div>
-          </ng-container>
-        </ng-container>
+        <cdm-colors
+          [turn]="turn"
+          [game]="game"
+          (selectable)="setSelectable($event.color, $event.turn)"
+          (color)="selectColor($event.option, $event.color)"
+        ></cdm-colors>
       </div>
       <div class="actions">
-        <ng-container *ngIf="turn.loading">
-          <div class="lds-dual-ring"></div>
-        </ng-container>
-        <ng-container *ngIf="!turn.loading">
-          <ng-container *ngIf="turn.turnState === turnState.Complete && !turn.isWinningTurn; else winIcon">
-            <div class="turn-incorrect">
-                <span class="icon">
-                  <i class="fa-solid fa-xmark"></i>
-                </span>
-            </div>
-          </ng-container>
-          <ng-template #winIcon>
-            <ng-container *ngIf="turn.turnState === turnState.Complete && turn.isWinningTurn; else button">
-              <div class="turn-correct">
-                <span class="icon">
-                  <i class="fa-solid fa-check"></i>
-                </span>
-              </div>
-            </ng-container>
-          </ng-template>
-          <ng-template #button>
-            <button
-              class="complete-turn"
-              [class.disabled]="turn.turnState === turnState.NotStarted"
-              [disabled]="turn.turnState !== turnState.InProgress"
-              [class.active]="turn.turnState !== turnState.NotStarted"
-              (click)="completeTurn(turn, turnIdx)"
-            ></button>
-          </ng-template>
-        </ng-container>
+        <cdm-turn-complete
+          [turn]="turn"
+          [turnIdx]="turnIdx"
+          (complete)="completeTurn($event.turn, $event.turnIdx)"
+        ></cdm-turn-complete>
       </div>
     </div>
   </ng-container>

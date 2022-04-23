@@ -1,0 +1,8 @@
+<ng-container *ngFor="let pin of pins">
+  <div
+    [class]="'pin pin-' + pin"
+    [class.active-pin-shadow]="state === turnState.InProgress"
+    [class.pin-shadow]="state === turnState.NotStarted"
+    [class.pin-inset-shadow]="state === turnState.Complete"
+  ></div>
+</ng-container>

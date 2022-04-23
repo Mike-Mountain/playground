@@ -1,0 +1,42 @@
+<ng-container *ngIf="turn && turnIdx !== undefined">
+  <ng-container *ngIf="turn.loading">
+    <shared-spinner></shared-spinner>
+  </ng-container>
+
+  <ng-container *ngIf="!turn.loading">
+
+    <ng-container
+      *ngTemplateOutlet="turn.turnState === turnState.Complete && !turn.isWinningTurn ? incorrect : turn.turnState === turnState.Complete && turn.isWinningTurn ? correct : button"
+    ></ng-container>
+  </ng-container>
+</ng-container>
+
+
+<ng-template #button>
+  <button
+    *ngIf="turn && turnIdx !== undefined"
+    class="complete-turn"
+    [disabled]="turn.turnState !== turnState.InProgress"
+    [class.disabled]="turn.turnState !== turnState.InProgress"
+    [class.active-pin-shadow]="turn.turnState === turnState.InProgress"
+    [class.pin-shadow]="turn.turnState === turnState.NotStarted"
+    [class.pin-inset-shadow]="turn.turnState === turnState.Complete"
+    (click)="completeTurn(turn, turnIdx)"
+  ></button>
+</ng-template>
+
+<ng-template #correct>
+  <div class="turn-correct">
+    <span class="icon">
+      <i class="fa-solid fa-check"></i>
+    </span>
+  </div>
+</ng-template>
+
+<ng-template #incorrect>
+  <div class="turn-incorrect">
+    <span class="icon">
+      <i class="fa-solid fa-xmark"></i>
+    </span>
+  </div>
+</ng-template>

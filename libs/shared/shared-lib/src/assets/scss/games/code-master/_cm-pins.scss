@@ -1,0 +1,27 @@
+@import "cm-shared";
+
+.pin {
+  @extend %game-block;
+  @extend %mini-button;
+}
+
+.pin-shadow {
+  box-shadow: 0 0 0 1px var(--info);
+}
+
+.active-pin-shadow {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.pin-inset-shadow {
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 0, 0.4)
+}
+
+.pin-black {
+  background-color: var(--primary);
+}
+
+.pin-white {
+  background-color: white;
+}

@@ -1,0 +1,10 @@
+<div class="win-combination-colors" *ngIf="game">
+  <ng-container *ngFor="let color of game.winCombination">
+    <div
+      class="color-block active win-combination-block flex-center is-capitalized"
+      [ngClass]="game.winState !== winState.InProgress ? 'button-' + color : ''"
+    >
+      {{game.winState !== winState.InProgress ? color : ''}}
+    </div>
+  </ng-container>
+</div>
