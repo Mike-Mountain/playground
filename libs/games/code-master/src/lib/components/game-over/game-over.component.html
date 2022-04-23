@@ -1,0 +1,19 @@
+<div class="card" *ngIf="data">
+  <div class="card-content">
+    <h2 class="is-size-2 has-text-centered has-text-primary">{{data.title}}</h2>
+    <p class="has-text-centered has-text-primary">{{data.description}}</p>
+    <ng-container *ngIf="data.colorsTitle">
+      <p class="has-text-centered has-text-primary">{{data.colorsTitle}}</p>
+      <div class="colors">
+        <ng-container *ngFor="let color of winCombination">
+          <div class="color-block flex-center" [class]="'button-' + color">
+            <small class="has-text-light is-capitalized">{{color}}</small>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+    <div class="flex-center w-100 mt-3">
+      <button class="button is-info" (click)="refreshGame()">Click to play again!</button>
+    </div>
+  </div>
+</div>

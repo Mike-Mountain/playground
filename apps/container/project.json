@@ -104,6 +104,12 @@
       "options": {
         "commands": ["nx serve games", "nx serve container"]
       }
+    },
+    "serve-network": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["nx serve games --host=192.168.0.100", "nx serve container --host=192.168.0.100"]
+      }
     }
   },
   "tags": []

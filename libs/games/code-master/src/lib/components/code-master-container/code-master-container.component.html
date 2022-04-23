@@ -1,0 +1,12 @@
+<cdm-game-board
+  [game]="codeMasterGame$ | async"
+  (gameOver)="showGameOver($event)"
+></cdm-game-board>
+
+<div class="modal" [class.is-active]="gameOver" *ngIf="codeMasterGame$ | async as game">
+  <div class="modal-background"></div>
+  <div class="modal-content px-5">
+    <cdm-game-over [winState]="winState" [winCombination]="game.winCombination" (playAgain)="refreshGame()"></cdm-game-over>
+  </div>
+  <button class="is-large modal-close"></button>
+</div>

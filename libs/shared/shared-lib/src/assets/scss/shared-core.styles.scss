@@ -1,7 +1,16 @@
 @import "utils/index";
 @import "variables/colors";
 @import "bulma/bulma";
+@import "games/index";
 
 body {
   background-color: var(--background);
+}
+
+.card {
+  background-color: var(--container);
+}
+
+.modal-background {
+  background-color: rgba(var(--containerValues), .5);
 }

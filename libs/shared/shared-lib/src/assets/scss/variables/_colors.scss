@@ -7,7 +7,10 @@ $danger: #bf0000;
 $background: #292d3e;
 $container: #424864;
 $sidebar: #3c415c;
+
 $containerValues: 66, 72, 100;
+$infoValues: 0, 165, 255;
+$primaryValues: 246, 193, 110;
 
 :root {
   --primary: #{$primary};
@@ -20,4 +23,19 @@ $containerValues: 66, 72, 100;
   --container: #{$container};
   --sidebar: #{$sidebar};
   --containerValues: #{$containerValues};
+  --infoValues: #{$infoValues};
+  --primaryValues: #{$primaryValues};
+
+  --yellow: #e0ca00;
+  --light-green: #08d44f;
+  --green: #208a45;
+  --light-blue: #3789ed;
+  --blue: #265a99;
+  --indigo: #7700ff;
+  --purple: #a600ff;
+  --magenta: #c800ff;
+  --red: #ce1b0d;
+  --orange: #ff4d00;
+  --tangerine: #ff8400;
+  --peach: #ffa200;
 }

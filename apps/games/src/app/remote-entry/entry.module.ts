@@ -1,20 +1,19 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-
-import { RemoteEntryComponent } from './entry.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
-  declarations: [RemoteEntryComponent],
+  declarations: [],
   imports: [
     CommonModule,
     RouterModule.forChild([
       {
-        path: '',
-        component: RemoteEntryComponent,
-      },
+        path: 'code-master',
+        loadChildren: () => import('@playground/code-master/entry/games-code-master.module').then(m => m.GamesCodeMasterModule)
+      }
     ]),
   ],
   providers: [],
 })
-export class RemoteEntryModule {}
+export class RemoteEntryModule {
+}

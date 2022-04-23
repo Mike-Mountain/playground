@@ -5,7 +5,9 @@
     "container-e2e": "apps/e2e/container-e2e",
     "container-lib": "libs/container-lib",
     "games": "apps/games",
+    "code-master": "libs/games/code-master",
     "games-e2e": "apps/e2e/games-e2e",
+    "games-shared": "libs/games/games-shared",
     "shared-lib": "libs/shared/shared-lib"
   }
 }

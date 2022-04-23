@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/games/code-master",
+  "sourceRoot": "libs/games/code-master/src",
+  "prefix": "cdm",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/games/code-master"],
+      "options": {
+        "jestConfig": "libs/games/code-master/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/games/code-master/src/**/*.ts",
+          "libs/games/code-master/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

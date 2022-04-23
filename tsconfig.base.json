@@ -16,7 +16,12 @@
     "baseUrl": ".",
     "paths": {
       "@playground/container-lib": ["libs/container-lib/src/index.ts"],
-      "@playground/shared/shared-lib": ["libs/shared/shared-lib/src/index.ts"]
+      "@playground/games/code-master": ["libs/games/code-master/src/index.ts"],
+      "@playground/games/games-shared": [
+        "libs/games/games-shared/src/index.ts"
+      ],
+      "@playground/shared/shared-lib": ["libs/shared/shared-lib/src/index.ts"],
+      "@playground/code-master/entry/*": ["libs/games/code-master/src/lib/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,0 +1,197 @@
+button {
+  background-color: transparent;
+  border: none;
+}
+
+.active-turn-number {
+  color: var(--info);
+}
+
+.won {
+  color: var(--primary);
+}
+
+.incorrect {
+  color: var(--danger)
+}
+
+.code-master-game-board {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-gap: .5rem;
+}
+
+.turn {
+  display: grid;
+  grid-template-columns: 1rem 16% 1fr 3.5rem;
+  max-height: 4rem;
+}
+
+.win-combination {
+  border-bottom: 1px solid var(--primary);
+  padding-bottom: .5rem;
+  margin-bottom: .5rem;
+}
+
+.win-combination-colors, .colors {
+  grid-column: 3/4;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: .5rem;
+}
+
+.win-combination-block {
+  background-color: var(--primary);
+}
+
+.color-block, .pin, .complete-turn, .mini-button {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  min-height: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px rgba(var(--infoValues), 1);
+  color: white;
+  &:active {
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.disabled {
+  opacity: .4 !important;
+}
+
+
+.active {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 0, 0, 0.6);
+}
+
+.inset {
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 0, 0, 0.6);
+}
+
+.inset-pin {
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.pins, .multi-button {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  height: 80%;
+  width: 80%;
+  margin: auto 0;
+}
+
+.multi-button {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  .mini-button {
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    &:nth-child(2) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    &:nth-child(3) {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    &:nth-child(4) {
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+.mini-button {
+  min-height: 0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 0, 0, 0.5);
+  &:active {
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pin, .complete-turn {
+  min-height: 1rem;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+}
+
+.complete-turn {
+  height: 2rem;
+  width: 2rem;
+}
+
+.complete-turn:not(.disabled) {
+  background-color: var(--info);
+}
+
+.turn-incorrect, .turn-correct {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--danger);
+  border: 1px solid var(--danger);
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.4);
+  color: white;
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+}
+
+.turn-correct {
+  background-color: var(--success);
+  border: 1px solid var(--success);
+}
+
+.pin-black {
+  background-color: var(--primary);
+}
+
+.pin-white {
+  background-color: white;
+}
+
+
+// SPINNER
+.lds-dual-ring {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  border: 1px solid var(--info);
+  border-color: var(--info) transparent var(--info) transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
