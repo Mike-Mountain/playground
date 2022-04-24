@@ -70,7 +70,7 @@
       "defaultConfiguration": "development",
       "options": {
         "port": 4201,
-        "publicHost": "http://192.168.0.100:4201"
+        "publicHost": "http://localhost:4201"
       }
     },
     "extract-i18n": {
