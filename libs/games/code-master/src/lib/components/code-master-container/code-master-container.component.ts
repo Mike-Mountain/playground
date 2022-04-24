@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable, tap} from "rxjs";
-import {CodeMasterGame} from "../../models/code-master.model";
+import {CodeMasterGame, CodeMasterSettings} from "../../models/code-master.model";
 import {CodeMasterService} from "../../services/code-master.service";
 import {TurnState, WinState} from "@playground/code-master/entry/models/states.enum";
 
@@ -31,8 +31,8 @@ export class CodeMasterContainerComponent implements OnInit {
     this.winState = winState;
   }
 
-  refreshGame() {
+  refreshGame(settings?: CodeMasterSettings) {
     this.gameOver = false;
-    this.codeMasterService.createGameWithSettings();
+    this.codeMasterService.createGameWithSettings(settings);
   }
 }

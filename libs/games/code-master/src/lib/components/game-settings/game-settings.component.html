@@ -1,0 +1,57 @@
+<div class="card" *ngIf="settingsForm && settings">
+  <div class="card-content">
+    <h2 class="is-size-2 has-text-centered has-text-light">Settings</h2>
+    <hr class="w-85 mx-auto has-background-light">
+    <form class="settings-form" [formGroup]="settingsForm">
+      <div class="settings-form-field">
+        <label class="settings-label">Number of turns:</label>
+        <input class="settings-input" type="number" formControlName="numberOfTurns">
+      </div>
+
+      <div class="settings-form-field">
+        <label class="settings-label">Number of colors:</label>
+        <input class="settings-input" type="number" formControlName="numberOfColors">
+      </div>
+
+      <div class="color-options-form-field" *ngIf="settings.colorOptions">
+        <label class="settings-label w-100 flex-between">
+          <span>Color Options:</span>
+          <small>{{settings.colorOptions.length}}</small>
+        </label>
+        <div
+          class="color-options"
+          cdkDropList
+          #selectedColors="cdkDropList"
+          [cdkDropListData]="settings.colorOptions"
+          [cdkDropListConnectedTo]="options"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <ng-container *ngFor="let color of settings.colorOptions">
+            <div class="color-block" [class]="'button-' + color" cdkDrag>
+              <small class="font-size-tiny is-capitalized">{{color}}</small>
+            </div>
+          </ng-container>
+        </div>
+        <hr class="w-85 mx-auto my-3 has-background-light">
+        <div
+          class="color-options"
+          cdkDropList
+          #options="cdkDropList"
+          [cdkDropListData]="allColorOptions"
+          [cdkDropListConnectedTo]="selectedColors"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <ng-container *ngFor="let color of allColorOptions">
+            <div class="color-block" [class]="'button-' + color" cdkDrag>
+              <small class="font-size-tiny is-capitalized">{{color}}</small>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </form>
+    <div class="flex-end w-100 mx-auto my-2">
+      <button class="button is-danger mr-2" (click)="closeModal()">cancel</button>
+      <button class="button is-primary" (click)="saveSettings()">Save</button>
+    </div>
+  </div>
+</div>

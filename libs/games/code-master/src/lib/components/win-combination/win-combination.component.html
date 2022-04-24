@@ -1,10 +1,13 @@
-<div class="win-combination-colors" *ngIf="game">
-  <ng-container *ngFor="let color of game.winCombination">
-    <div
-      class="color-block active win-combination-block flex-center is-capitalized"
-      [ngClass]="game.winState !== winState.InProgress ? 'button-' + color : ''"
-    >
-      {{game.winState !== winState.InProgress ? color : ''}}
-    </div>
-  </ng-container>
-</div>
+<ng-container *ngIf="game">
+  <div class="win-combination-colors"
+       [ngStyle]="{'grid-template-columns': 'repeat(' + game.settings.numberOfColors + ', 1fr)'}">
+    <ng-container *ngFor="let color of game.winCombination">
+      <div
+        class="color-block active win-combination-block flex-center is-capitalized font-size-tiny"
+        [ngClass]="game.winState !== winState.InProgress ? 'button-' + color : ''"
+      >
+        {{game.winState !== winState.InProgress ? color : ''}}
+      </div>
+    </ng-container>
+  </div>
+</ng-container>

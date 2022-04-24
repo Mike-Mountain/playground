@@ -4,13 +4,30 @@
   margin-bottom: .5rem;
 }
 
-.win-combination-colors, .colors {
+.win-combination-colors {
   grid-column: 3/4;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   grid-gap: .5rem;
 }
 
 .win-combination-block {
   background-color: var(--primary);
+}
+
+.settings-icon {
+  margin: auto;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  color: var(--info);
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 1)) !important;
+  i {
+    margin-top: .2rem;
+  }
+  &:active {
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, .3)) !important;
+  }
 }

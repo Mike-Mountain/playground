@@ -19,8 +19,6 @@ export interface CodeMasterSettings {
   colorOptions: string[];
   numberOfColors: number;
   numberOfTurns: number;
-  includeBlanks: boolean;
-  includeDuplicateColors: boolean;
 }
 
 export interface CodeMasterGame {
@@ -32,11 +30,9 @@ export interface CodeMasterGame {
 
 export function createDefaultCMSettings() {
   return {
-    colorOptions: ['red', 'blue', 'green', 'yellow', 'blank'],
+    colorOptions: ['red', 'orange', 'green', 'forest', 'cyan', 'blue', 'purple', 'blank'],
     numberOfColors: 4,
     numberOfTurns: 10,
-    includeBlanks: true,
-    includeDuplicateColors: true
   } as CodeMasterSettings;
 }
 

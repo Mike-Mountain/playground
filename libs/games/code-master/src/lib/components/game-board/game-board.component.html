@@ -1,6 +1,9 @@
 <section class="code-master-game-board" *ngIf="game">
   <div class="win-combination turn">
     <cdm-win-combination [game]="game"></cdm-win-combination>
+    <button class="icon settings-icon" (click)="showSettingsModal = true">
+      <i class="fa-solid fa-gear fa-2xl"></i>
+    </button>
   </div>
   <ng-container *ngFor="let turn of game.turns; let turnIdx = index">
     <div class="turn">
@@ -13,13 +16,14 @@
           {{game.turns.length - turnIdx}}
         </p>
       </div>
-      <div class="pins">
+      <div class="pins" [class.pins-4]="game.settings.numberOfColors === 4">
         <cdm-pins [pins]="turn.pins" [state]="turn.turnState"></cdm-pins>
       </div>
-      <div class="colors">
+      <div class="colors" [ngStyle]="{'grid-template-columns': 'repeat(' + game.settings.numberOfColors + ', 1fr)'}">
         <cdm-colors
           [turn]="turn"
           [game]="game"
+          [turnIdx]="turnIdx"
           (selectable)="setSelectable($event.color, $event.turn)"
           (color)="selectColor($event.option, $event.color)"
         ></cdm-colors>
@@ -34,3 +38,11 @@
     </div>
   </ng-container>
 </section>
+
+
+<div class="modal" [class.is-active]="showSettingsModal">
+  <div class="modal-background" (click)="showSettingsModal=false"></div>
+  <div class="modal-content px-5">
+    <cdm-game-settings [settings]="game?.settings" (close)="showSettingsModal = false"></cdm-game-settings>
+  </div>
+</div>

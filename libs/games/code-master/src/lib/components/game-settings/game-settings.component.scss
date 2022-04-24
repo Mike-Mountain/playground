@@ -1,0 +1,50 @@
+.card-content {
+  padding: .75rem;
+}
+
+.settings-form-field {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.25rem;
+  margin: 1rem 0;
+}
+
+.color-options-form-field {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 0.25rem;
+  margin: 1rem 0;
+}
+
+.settings-input {
+  width: 15%;
+}
+
+.color-options {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.color-block {
+  width: 2.3rem;
+  height: 2.3rem;
+  margin: .2rem;
+  border: 2px solid transparent !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.font-size-tiny {
+  font-size: .4rem;
+}
+
+.selected {
+  border-color: var(--primary) !important;
+}

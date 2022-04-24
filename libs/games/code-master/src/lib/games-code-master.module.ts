@@ -9,14 +9,19 @@ import { WinCombinationComponent } from './components/win-combination/win-combin
 import { PinsComponent } from './components/pins/pins.component';
 import { ColorsComponent } from './components/colors/colors.component';
 import { TurnCompleteComponent } from './components/turn-complete/turn-complete.component';
+import { GameSettingsComponent } from './components/game-settings/game-settings.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     RouterModule.forChild([
-      { path: '', component: CodeMasterContainerComponent },
+      {path: '', component: CodeMasterContainerComponent},
     ]),
     LoadingModule,
+    DragDropModule,
   ],
   declarations: [
     CodeMasterContainerComponent,
@@ -26,6 +31,7 @@ import { TurnCompleteComponent } from './components/turn-complete/turn-complete.
     PinsComponent,
     ColorsComponent,
     TurnCompleteComponent,
+    GameSettingsComponent,
   ],
 })
 export class GamesCodeMasterModule {}

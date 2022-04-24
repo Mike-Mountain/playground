@@ -1,28 +1,40 @@
 <ng-container *ngIf="game && turn">
-  <ng-container *ngFor="let color of turn.colors">
-    <ng-container *ngIf="!color.selectable">
+  <ng-container *ngFor="let color of turn.colors; let colorIdx = index">
+    <div class="dropdown" [class.is-active]="color.selectable" #dropdown>
       <button
-        class="color-block is-capitalized"
+        class="color-block is-capitalized font-size-tiny"
         [class.active-color-block-shadow]="turn.turnState === turnState.InProgress"
         [class.inset-color-block-shadow]="turn.turnState === turnState.Complete"
         [class.color-block-shadow]="turn.turnState === turnState.NotStarted"
+        [class.selectable]="color.selectable"
         [ngClass]="color.selectedColor ? 'button-' + color.selectedColor : ''"
         [disabled]="turn.turnState !== turnState.InProgress"
-        (click)="setSelectable(color, turn)"
+        (click)="setSelectable(color, turn, colorIdx, dropdown)"
       >
         {{turn.turnState !== turnState.NotStarted ? color.selectedColor : ''}}
       </button>
-    </ng-container>
-
-    <ng-container *ngIf="color.selectable">
-      <div class="color-block multi-button">
-        <ng-container *ngFor="let option of game.settings.colorOptions">
-          <button
-            (click)="selectColor(option, color)"
-            [class]="'mini-button button-' + option" *ngIf="option !== 'blank'"
-          ></button>
-        </ng-container>
+      <div class="dropdown-menu">
+        <div class="dropdown-content">
+          <ng-container *ngFor="let choice of game.settings.colorOptions">
+            <button
+              class="color-block choice-block active-color-block-shadow"
+              [class]="'button-' + choice"
+              (click)="selectColor(choice, color)"
+            ></button>
+          </ng-container>
+        </div>
       </div>
-    </ng-container>
+    </div>
+
+    <!--    <ng-container *ngIf="color.selectable">-->
+    <!--      <div class="color-block multi-button">-->
+    <!--        <ng-container *ngFor="let option of game.settings.colorOptions">-->
+    <!--          <button-->
+    <!--            (click)="selectColor(option, color)"-->
+    <!--            [class]="'mini-button button-' + option" *ngIf="option !== 'blank'"-->
+    <!--          ></button>-->
+    <!--        </ng-container>-->
+    <!--      </div>-->
+    <!--    </ng-container>-->
   </ng-container>
 </ng-container>

@@ -3,17 +3,17 @@
   border: 1px solid var(--yellow) !important;
   box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.4);
 };
-.button-light-green {
+.button-green {
   background-color: var(--light-green) !important;
   border: 1px solid var(--light-green) !important;
   box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.4);
 };
-.button-green {
+.button-forest {
   background-color: var(--green) !important;
   border: 1px solid var(--green) !important;
   box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.4);
 };
-.button-light-blue {
+.button-cyan {
   background-color: var(--light-blue) !important;
   border: 1px solid var(--light-blue) !important;
   box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.4);
@@ -33,7 +33,7 @@
   border: 1px solid var(--purple) !important;
   box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.4);
 };
-.button-magenta {
+.button-pink {
   background-color: var(--magenta) !important;
   border: 1px solid var(--magenta) !important;
   box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.4);
@@ -48,14 +48,34 @@
   border: 1px solid var(--orange) !important;
   box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.4);
 };
-.button-tangerine {
-  background-color: var(--tangerine) !important;
-  border: 1px solid var(--tangerine) !important;
+.button-fire {
+  background-color: var(--fire) !important;
+  border: 1px solid var(--fire) !important;
   box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.4);
 };
 .button-peach {
   background-color: var(--peach) !important;
   border: 1px solid var(--peach) !important;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.4);
+};
+.button-peach {
+  background-color: var(--peach) !important;
+  border: 1px solid var(--peach) !important;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.4);
+};
+.button-teal {
+  background-color: var(--teal) !important;
+  border: 1px solid var(--teal) !important;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.4);
+};
+.button-olive {
+  background-color: var(--olive) !important;
+  border: 1px solid var(--olive) !important;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.4);
+};
+.button-mauve {
+  background-color: var(--mauve) !important;
+  border: 1px solid var(--mauve) !important;
   box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.4);
 };
 .button-blank {

@@ -17,6 +17,7 @@ export class GameBoardComponent implements OnInit {
 
   public turnState = TurnState;
   public winState = WinState
+  public showSettingsModal = false;
 
   constructor(private codeMasterService: CodeMasterService) {
   }
@@ -25,7 +26,7 @@ export class GameBoardComponent implements OnInit {
 
   public setSelectable(color: CMColor, turn: CodeMasterTurn): void {
     if (turn.turnState === TurnState.InProgress && this.canSelectColor()) {
-      color.selectedColor !== 'blank' ? color.selectedColor = 'blank' : color.selectable = true;
+      color.selectable = true;
     }
   }
 
