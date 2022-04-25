@@ -1,11 +1,18 @@
-<nav class="sidebar">
-  <h3 class="text-center my-2 is-size-3">Playground</h3>
-  <hr class="dropdown-divider w-85 mx-auto">
-  <aside class="menu">
-    <p class="menu-label">Games</p>
-    <ul class="menu-list">
-      <li><a class="menu-item" routerLink="/games/code-master" routerLinkActive="link-active" [routerLinkActiveOptions]="{exact: true}">Code Master</a></li>
-      <li><a class="menu-item" routerLink="/games/" routerLinkActive="link-active" [routerLinkActiveOptions]="{exact: true}">Hangman</a></li>
-    </ul>
-  </aside>
-</nav>
+<div class="sidebar">
+  <div class="sidebar-content">
+    <h3 class="text-center my-2 is-size-3">Playground</h3>
+    <hr class="dropdown-divider w-85 mx-auto">
+    <nav class="menu">
+      <p class="menu-label">Games</p>
+      <ul class="menu-list">
+        <li><a class="menu-item" routerLink="/games/code-master" routerLinkActive="link-active"
+               [routerLinkActiveOptions]="{exact: true}">Code Master</a></li>
+        <li><a class="menu-item" routerLink="/games/" routerLinkActive="link-active"
+               [routerLinkActiveOptions]="{exact: true}">Hangman</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="version p-3 flex-center">
+    <small class="font-size-tiny">v0.01</small>
+  </div>
+</div>

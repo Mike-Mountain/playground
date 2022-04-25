@@ -7,6 +7,9 @@
   z-index: 999;
   box-shadow: 0 4px 8px rgb(0 0 0 / 20%), 0 0 0 1px rgb(0 0 0 / 10%);
   color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .menu {
