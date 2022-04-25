@@ -6,7 +6,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/games/games-shared"],
+      "outputs": [
+        "coverage/libs/games/games-shared"
+      ],
       "options": {
         "jestConfig": "libs/games/games-shared/jest.config.js",
         "passWithNoTests": true

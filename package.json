@@ -6,6 +6,7 @@
     "start": "nx serve",
     "serve-mfe": "nx run container:serve-mfe",
     "serve-network": "nx run container:serve-network",
+    "deploy": "nx run container:build && nx run games:build && firebase deploy --only hosting",
     "build": "nx build",
     "test": "nx test",
     "postinstall": "ngcc --properties es2015 browser module main"
@@ -47,6 +48,7 @@
     "@angular/common": "~13.3.0",
     "@angular/compiler": "~13.3.0",
     "@angular/core": "~13.3.0",
+    "@angular/fire": "^7.3.0",
     "@angular/forms": "~13.3.0",
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",

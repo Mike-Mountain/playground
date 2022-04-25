@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/games",
         "index": "apps/games/src/index.html",
@@ -14,8 +16,13 @@
         "polyfills": "apps/games/src/polyfills.ts",
         "tsConfig": "apps/games/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/games/src/favicon.ico", "apps/games/src/assets"],
-        "styles": ["apps/games/src/styles.scss"],
+        "assets": [
+          "apps/games/src/favicon.ico",
+          "apps/games/src/assets"
+        ],
+        "styles": [
+          "apps/games/src/styles.scss"
+        ],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/games/webpack.config.js"
@@ -70,7 +77,7 @@
       "defaultConfiguration": "development",
       "options": {
         "port": 4201,
-        "publicHost": "http://localhost:4201"
+        "publicHost": "https://ng-games.web.app"
       }
     },
     "extract-i18n": {
@@ -90,7 +97,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/games"],
+      "outputs": [
+        "coverage/apps/games"
+      ],
       "options": {
         "jestConfig": "apps/games/jest.config.js",
         "passWithNoTests": true

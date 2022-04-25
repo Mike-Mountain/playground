@@ -1,0 +1,13 @@
+{
+"projects": {
+    "default": "playground-lt"
+  },
+  "targets": {
+    "playground-lt": {
+      "hosting": {
+        "container": ["playground-lt"],
+        "games": ["ng-games"]
+      }
+    }
+  }
+}
