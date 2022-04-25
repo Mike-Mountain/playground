@@ -1,5 +1,8 @@
 <div class="card" *ngIf="settingsForm && settings">
   <div class="card-content">
+    <button class="icon settings-icon" (click)="closeModal()">
+      <i class="fa-solid fa-xmark fa-lg"></i>
+    </button>
     <h2 class="is-size-2 has-text-centered has-text-light">Settings</h2>
     <hr class="w-85 mx-auto has-background-light">
     <form class="settings-form" [formGroup]="settingsForm">

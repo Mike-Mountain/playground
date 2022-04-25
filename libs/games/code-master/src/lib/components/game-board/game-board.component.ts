@@ -18,6 +18,7 @@ export class GameBoardComponent implements OnInit {
   public turnState = TurnState;
   public winState = WinState
   public showSettingsModal = false;
+  public showHelpModal = false;
 
   constructor(private codeMasterService: CodeMasterService) {
   }

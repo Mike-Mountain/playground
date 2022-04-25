@@ -14,7 +14,7 @@
   background-color: var(--primary);
 }
 
-.settings-icon {
+.settings-icon, .help-icon {
   margin: auto;
   border-radius: 50%;
   border: none;
@@ -30,4 +30,8 @@
   &:active {
     filter: drop-shadow(0 3px 6px rgba(0, 0, 0, .3)) !important;
   }
+}
+
+.help-icon {
+  grid-column: 2/3;
 }
