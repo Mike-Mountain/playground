@@ -5,10 +5,11 @@
     </button>
     <h2 class="is-size-2 has-text-centered has-text-light">How to play</h2>
     <hr class="w-85 mx-auto has-background-light">
-    <h5 class="w-100 is-size-5 has-text-centered has-text-light my-2">Guess the color combination</h5>
+    <h5 class="w-100 is-size-5 has-text-centered has-text-light mt-1">Guess the color combination</h5>
     <ul class="help-list">
       <li class="my-2"><small>The combination can have any number of each colour.</small></li>
-      <li class="my-2"><small>Click on a button to bring up a colour selection box. Click on one of the colours to choose that colour.</small></li>
+      <li class="my-2"><small>Click on a button to bring up a colour selection box. Click on one of the colours to
+        choose that colour.</small></li>
       <li class="my-2"><small>Click the button at the end of the row to end the turn.</small></li>
       <li class="my-2">
         <small>After each turn, the pins will fill in either white or yellow.</small>
@@ -31,16 +32,12 @@
       </div>
       <div class="colors" [ngStyle]="{'grid-template-columns': 'repeat(' + settings.numberOfColors + ', 1fr)'}">
         <ng-container *ngFor="let color of colors; let colorIdx = index">
-          <div class="dropdown is-right" [class.is-active]="colorIdx === settings.numberOfColors - 1">
-            <button class="color-block example-block is-capitalized font-size-tiny active-color-block-shadow" [class]="'button-' + color" [class.selectable]="colorIdx === settings.numberOfColors - 1">{{color}}</button>
-            <div class="dropdown-menu mt-1">
-              <div class="dropdown-content">
-                <ng-container *ngFor="let choice of settings.colorOptions">
-                  <button class="color-block choice-block active-color-block-shadow" [class]="'button-' + choice"></button>
-                </ng-container>
-              </div>
-            </div>
-          </div>
+          <button
+            class="color-block example-block is-capitalized font-size-tiny active-color-block-shadow"
+            [class]="'button-' + color"
+          >
+            {{color}}
+          </button>
         </ng-container>
       </div>
       <div class="actions">
