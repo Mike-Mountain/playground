@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
           loadChildren: () =>
             import('games/Module').then((m) => m.RemoteEntryModule),
         },
+        {path: '', pathMatch: 'full', redirectTo: '/games'},
       ],
       { initialNavigation: 'enabledBlocking' }
     ),
