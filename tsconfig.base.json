@@ -15,13 +15,13 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@playground/code-master/entry/*": ["libs/games/code-master/src/lib/*"],
       "@playground/container-lib": ["libs/container-lib/src/index.ts"],
-      "@playground/games-shared/entry/*": ["libs/games/games-shared/src/lib/*"],
       "@playground/games/code-master": ["libs/games/code-master/src/index.ts"],
-      "@playground/games/games-shared": [
-        "libs/games/games-shared/src/index.ts"
-      ],
+      "@playground/games/games-shared": ["libs/games/games-shared/src/index.ts"],
+      "@playground/games/hangman": ["libs/games/hangman/src/index.ts"],
+      "@playground/code-master/entry/*": ["libs/games/code-master/src/lib/*"],
+      "@playground/hangman/entry/*": ["libs/games/hangman/src/lib/*"],
+      "@playground/games-shared/entry/*": ["libs/games/games-shared/src/lib/*"],
       "@playground/shared/shared-lib": ["libs/shared/shared-lib/src/index.ts"]
     }
   },

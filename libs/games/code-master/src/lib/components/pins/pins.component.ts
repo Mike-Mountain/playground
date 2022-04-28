@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CMPin} from "@playground/code-master/entry/models/code-master.model";
-import {TurnState} from "@playground/code-master/entry/models/states.enum";
+import {TurnState} from "@playground/games/games-shared";
 
 @Component({
   selector: 'cdm-pins',

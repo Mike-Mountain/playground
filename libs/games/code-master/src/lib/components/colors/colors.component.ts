@@ -10,7 +10,7 @@ import {
   ViewChild
 } from '@angular/core';
 import {CMColor, CodeMasterGame, CodeMasterTurn} from "@playground/code-master/entry/models/code-master.model";
-import {TurnState} from "@playground/code-master/entry/models/states.enum";
+import {TurnState} from "@playground/games/games-shared";
 
 @Component({
   selector: 'cdm-colors',

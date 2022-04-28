@@ -7,7 +7,7 @@ import {
   CodeMasterTurn,
   createCodeMasterGame
 } from "../models/code-master.model";
-import {WinState} from "@playground/code-master/entry/models/states.enum";
+import {WinState} from "@playground/games/games-shared";
 
 @Injectable({
   providedIn: 'root'

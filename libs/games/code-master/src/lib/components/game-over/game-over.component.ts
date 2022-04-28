@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {WinState} from "@playground/code-master/entry/models/states.enum";
+import {WinState} from "@playground/games/games-shared";
 
 @Component({
   selector: 'cdm-game-over',

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CMColor, CMPin, CodeMasterGame, CodeMasterTurn} from "../../models/code-master.model";
-import {TurnState, WinState} from "../../models/states.enum";
+import {TurnState, WinState} from "@playground/games/games-shared";
 import {CodeMasterService} from "../../services/code-master.service";
 import {interval, takeWhile} from "rxjs";
 
