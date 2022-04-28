@@ -6,11 +6,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/games/code-master"
-      ],
+      "outputs": ["coverage/libs/games/code-master"],
       "options": {
-        "jestConfig": "libs/games/code-master/jest.config.js",
+        "jestConfig": "libs/games/code-master/jest.config.ts",
         "passWithNoTests": true
       }
     },
