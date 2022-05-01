@@ -12,7 +12,7 @@ import {HttpClientModule} from "@angular/common/http";
   imports: [
     BrowserModule,
     HttpClientModule,
-    // BrowserAnimationsModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(
       [
         {

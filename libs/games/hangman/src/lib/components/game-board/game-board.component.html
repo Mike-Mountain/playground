@@ -1,0 +1,51 @@
+<section class="hangman-game-board" *ngIf="game">
+  <figure class="hanging-man">
+    <ng-container *ngFor="let step of hangManSteps">
+      <ng-container *ngIf="game.winState === winState.InProgress">
+        <object
+          *ngIf="(game.incorrectLetters.length - 1) === step && step <= 10"
+          class="hangman-figure"
+          type="image/svg+xml"
+          [data]="'assets/hangman/step_' + (step + 1) + '.svg' | safeUrl"
+        ></object>
+      </ng-container>
+
+      <ng-container *ngIf="game.winState === winState.Lost">
+        <object
+          *ngIf="step === 10"
+          class="hangman-figure"
+          type="image/svg+xml"
+          data="assets/hangman/step_11.svg"
+        ></object>
+      </ng-container>
+    </ng-container>
+  </figure>
+
+  <div class="selected-word" [ngStyle]="{gridTemplateColumns: 'repeat(' + game.selectedWord.length +', 1fr)'}">
+    <ng-container *ngFor="let letter of selectedWordArray">
+      <div
+        class="color-block color-block-shadow flex-center"
+        [ngClass]="letter.canShow ? 'inset-color-block-shadow' : ''"
+        [class.button-green]="letter.isCorrect"
+        [class.button-red]="!letter.isCorrect && game.winState !== winState.InProgress"
+      >
+        <h5 class="is-size-5" *ngIf="letter.canShow">{{letter.value}}</h5>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="hangman-keyboard" *ngIf="game">
+    <ng-container *ngFor="let letter of game.letters">
+      <button
+        class="color-block flex-center"
+        [class.active-color-block-shadow]="!letter.isSelected"
+        [class.inset-color-block-shadow]="letter.isSelected"
+        [class.button-red]="!letter.isCorrect && letter.isSelected"
+        [class.button-green]="letter.isCorrect"
+        (click)="selectLetter(letter)"
+      >
+        <h4 class="is-size-4">{{letter.value}}</h4>
+      </button>
+    </ng-container>
+  </div>
+</section>

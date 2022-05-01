@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import {BehaviorSubject, filter, map, Observable, tap} from "rxjs";
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, catchError, filter, map, Observable, of, tap} from "rxjs";
 import {createHangmanGame, HangmanGame, HangmanSettings} from "@playground/hangman/entry/models/hangman.model";
 import {HttpClient} from "@angular/common/http";
 
@@ -20,18 +20,21 @@ export class HangmanService {
 
   public createHangmanGameWithSettings(settings?: HangmanSettings) {
     this.selectWord(settings?.wordLength).subscribe(word => {
-      console.log(word);
       this.hangmanGameSrc.next(createHangmanGame(word, settings))
     })
   }
 
-  private selectWord(length = 5) {
-    const url = 'http://localhost:3000/words';
-    return this.http.get<string[]>(url).pipe(map(words => {
-      const wordsOfLength = words.filter(word => [...word].length === length)[0]
-      const randomIdx = Math.floor(Math.random() * wordsOfLength.length - 1);
-      console.log(wordsOfLength[randomIdx]);
-      return wordsOfLength[randomIdx]
-    }))
+  private selectWord(length?: number) {
+    const url = 'assets/mocks/words.mock.json';
+    return this.http.get<{ words: string[] }>(url).pipe(
+      map(res => {
+        const randomIdx = Math.floor(Math.random() * res.words.length);
+        return [res.words[randomIdx]].map(word => word.toUpperCase()).join();
+      }),
+      catchError(err => {
+        console.log(err);
+        return of('CROCKERY')
+      })
+    )
   }
 }

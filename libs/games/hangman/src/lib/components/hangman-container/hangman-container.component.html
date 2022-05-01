@@ -1,1 +1,6 @@
-<p>hangman-container works!</p>
+<ng-container *ngIf="(hangmanGame$ | async) as game">
+  <hng-game-board
+    *ngIf="game.selectedWord"
+    [game]="game"
+  ></hng-game-board>
+</ng-container>
