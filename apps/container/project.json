@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/container",
         "index": "apps/container/src/index.html",
@@ -20,9 +18,7 @@
           "apps/container/src/favicon.ico",
           "apps/container/src/assets"
         ],
-        "styles": [
-          "apps/container/src/styles.scss"
-        ],
+        "styles": ["apps/container/src/styles.scss"],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/container/webpack.config.js"
@@ -77,7 +73,7 @@
       "defaultConfiguration": "development",
       "options": {
         "port": 4200,
-        "publicHost": "https://playground-lt.web.app"
+        "publicHost": "http://192.168.0.102:4200"
       }
     },
     "extract-i18n": {
@@ -97,29 +93,24 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/container"
-      ],
+      "outputs": ["coverage/apps/container"],
       "options": {
-        "jestConfig": "apps/container/jest.config.js",
+        "jestConfig": "apps/container/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "serve-mfe": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "commands": [
-          "nx serve games",
-          "nx serve container"
-        ]
+        "commands": ["nx serve games", "nx serve container"]
       }
     },
     "serve-network": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
         "commands": [
-          "nx serve games --host=192.168.0.100",
-          "nx serve container --host=192.168.0.100"
+          "nx serve games --host=192.168.0.102",
+          "nx serve container --host=192.168.0.102"
         ]
       }
     },

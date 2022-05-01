@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/games/hangman",
+  "sourceRoot": "libs/games/hangman/src",
+  "prefix": "hng",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/games/hangman"],
+      "options": {
+        "jestConfig": "libs/games/hangman/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/games/hangman/src/**/*.ts",
+          "libs/games/hangman/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

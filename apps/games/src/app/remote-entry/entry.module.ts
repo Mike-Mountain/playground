@@ -8,12 +8,16 @@ import {RouterModule} from '@angular/router';
     CommonModule,
     RouterModule.forChild([
       {
-        path: '',
-        loadChildren: () => import('@playground/games-shared/entry/games-games-shared.module').then(m => m.GamesGamesSharedModule)
-      },
-      {
         path: 'code-master',
         loadChildren: () => import('@playground/code-master/entry/games-code-master.module').then(m => m.GamesCodeMasterModule)
+      },
+      {
+        path: 'hangman',
+        loadChildren: () => import('@playground/hangman/entry/games-hangman.module').then(m => m.GamesHangmanModule)
+      },
+      {
+        path: '',
+        loadChildren: () => import('@playground/games-shared/entry/games-games-shared.module').then(m => m.GamesGamesSharedModule)
       }
     ]),
   ],

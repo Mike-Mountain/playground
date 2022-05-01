@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Observable, tap} from "rxjs";
 import {CodeMasterGame, CodeMasterSettings} from "../../models/code-master.model";
 import {CodeMasterService} from "../../services/code-master.service";
-import {TurnState, WinState} from "@playground/code-master/entry/models/states.enum";
+import {TurnState, WinState} from "@playground/games/games-shared";
 
 @Component({
   selector: 'cdm-code-master-container',

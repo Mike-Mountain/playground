@@ -1,0 +1,54 @@
+.hangman-game-board {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hanging-man {
+  height: 45%;
+  position: relative;
+}
+
+.hangman-figure {
+  height: 350px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.selected-word {
+  height: 15%;
+}
+
+.selected-word {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-gap: .25rem;
+  width: 100%;
+  .color-block {
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 7px;
+  }
+}
+
+.hangman-keyboard {
+  width: 100%;
+  height: 40%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: .5rem
+}
+
+.color-block {
+  background-color: transparent;
+  &:nth-of-type(25) {
+    grid-column: 3/4;
+  }
+  &:nth-of-type(26) {
+    grid-column: 4/5;
+  }
+}

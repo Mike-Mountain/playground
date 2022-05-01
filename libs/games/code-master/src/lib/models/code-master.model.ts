@@ -1,4 +1,4 @@
-import {TurnState, WinState} from "./states.enum";
+import {TurnState, WinState} from "@playground/games/games-shared";
 
 export type CMPin = 'black' | 'white' | 'blank';
 

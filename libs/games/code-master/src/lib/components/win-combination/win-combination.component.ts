@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CodeMasterGame} from "@playground/code-master/entry/models/code-master.model";
-import {WinState} from "@playground/code-master/entry/models/states.enum";
+import {CodeMasterGame} from "../../models/code-master.model";
+import {WinState} from "@playground/games/games-shared";
 
 @Component({
   selector: 'cdm-win-combination',

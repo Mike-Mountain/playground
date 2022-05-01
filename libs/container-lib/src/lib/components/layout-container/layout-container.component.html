@@ -1,7 +1,5 @@
 <section class="layout">
-  <!--// TODO: Add animation for slide-in sidebar -->
-  <!--@toggleSidebar-->
-  <div class="sidebar-overlay" *ngIf="showSidebar" (click)="showSidebar = false">
+  <div class="sidebar-overlay" *ngIf="showSidebar" (click)="showSidebar = false" @toggleSidebar>
     <shared-sidebar class="sidebar"></shared-sidebar>
   </div>
   <div class="navigation">
