@@ -8,13 +8,13 @@ import {HttpClient} from "@angular/common/http";
 })
 export class HangmanService {
 
-  private hangmanGameSrc = new BehaviorSubject<HangmanGame>({} as HangmanGame);
+  private hangmanGameSrc = new BehaviorSubject<HangmanGame | undefined>(undefined);
 
   constructor(private http: HttpClient) {
     this.createHangmanGameWithSettings();
   }
 
-  public select(): Observable<HangmanGame> {
+  public select(): Observable<HangmanGame | undefined> {
     return this.hangmanGameSrc.asObservable();
   }
 

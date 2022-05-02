@@ -21,7 +21,7 @@ export interface HangmanGame {
   correctLetters: string[];
   incorrectLetters: string[];
   letters: Letter[];
-  winState: string;
+  winState: WinState;
   settings: HangmanSettings;
 }
 
