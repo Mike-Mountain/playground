@@ -64,6 +64,9 @@ export class GameBoardComponent implements OnInit, OnChanges {
             selectedLetter.isCorrect = true;
           }
         })
+        if (this.game.correctLetters.length === this.game.selectedWord.length) {
+          this.game.winState = WinState.Won;
+        }
       } else {
         this.game.incorrectLetters.push(letter.value);
         this.hangManSteps[this.game.incorrectLetters.length - 1].canShow = true;
