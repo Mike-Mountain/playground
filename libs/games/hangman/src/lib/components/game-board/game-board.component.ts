@@ -79,4 +79,11 @@ export class GameBoardComponent implements OnInit, OnChanges {
   playAgain() {
     this.refreshGame.emit();
   }
+
+  endGame() {
+    if (this.game) {
+      this.game.winState = WinState.Lost;
+      this.selectedWordArray.forEach(letter => letter.canShow = true);
+    }
+  }
 }

@@ -1,15 +1,6 @@
 <section class="hangman-game-board" *ngIf="game">
   <figure class="hanging-man">
     <hng-hanging-man [gameState]="game.winState" [hangManSteps]="hangManSteps"></hng-hanging-man>
-    <div class="w-100 flex-center mt-3">
-      <button
-        *ngIf="game.winState !== winState.InProgress"
-        class="button is-info w-65 mx-auto"
-        (click)="playAgain()"
-      >
-        Play Again
-      </button>
-    </div>
   </figure>
 
   <div class="selected-word" [ngStyle]="{gridTemplateColumns: 'repeat(' + game.selectedWord.length +', 1fr)'}">
@@ -23,6 +14,22 @@
         <h5 class="is-size-5" *ngIf="letter.canShow">{{letter.value}}</h5>
       </div>
     </ng-container>
+  </div>
+  <div class="w-100 h-10 flex-center mb-1">
+    <button
+      *ngIf="game.winState !== winState.InProgress"
+      class="button is-info is-small w-65 mx-auto"
+      (click)="playAgain()"
+    >
+      Play Again
+    </button>
+    <button
+      *ngIf="game.winState === winState.InProgress"
+      class="button is-info is-small w-65 mx-auto"
+      (click)="endGame()"
+    >
+      End Game
+    </button>
   </div>
 
   <div class="hangman-keyboard" *ngIf="game">
