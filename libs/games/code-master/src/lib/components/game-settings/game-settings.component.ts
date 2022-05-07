@@ -1,8 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CodeMasterService} from "../../services/code-master.service";
 import {CodeMasterSettings} from "../../models/code-master.model";
-import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
+import {colorOptions} from "../../models/color-options.const";
 
 @Component({
   selector: 'cdm-game-settings',
@@ -15,24 +16,7 @@ export class GameSettingsComponent implements OnInit {
   @Output() close = new EventEmitter<CodeMasterSettings>();
 
   public settingsForm: FormGroup | undefined;
-  public allColorOptions = [
-    'yellow',
-    'green',
-    'forest',
-    'cyan',
-    'blue',
-    'indigo',
-    'purple',
-    'pink',
-    'red',
-    'orange',
-    'fire',
-    'peach',
-    'teal',
-    'olive',
-    'mauve',
-    'blank',
-  ]
+  public allColorOptions = colorOptions;
 
   constructor(private codeMasterService: CodeMasterService, private formBuilder: FormBuilder) {
   }

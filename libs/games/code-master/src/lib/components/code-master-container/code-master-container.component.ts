@@ -56,10 +56,7 @@ export class CodeMasterContainerComponent implements OnInit {
       case 'single':
         this.playerMode = PlayerMode.single;
         this.codeMasterGame$ = this.codeMasterService.selectGame(this.playerMode)
-          .pipe(tap(game => {
-            console.log(game.winCombination);
-            game.turns[game.turns.length - 1].turnState = TurnState.InProgress;
-          }));
+          .pipe(tap(game => this.startCodeMasterGame(game)));
         break;
       case 'multi-o':
       case 'multi-l':
@@ -70,11 +67,13 @@ export class CodeMasterContainerComponent implements OnInit {
 
   createCodeMasterGame(selectedCombination: string[]) {
     this.codeMasterGame$ = this.codeMasterService.selectGame(this.playerMode, selectedCombination)
-      .pipe(tap(game => {
-        console.log(game.winCombination);
-        game.turns[game.turns.length - 1].turnState = TurnState.InProgress;
-      }));
+      .pipe(tap(game => this.startCodeMasterGame(game)));
     this.showCombinationSelect = false;
+  }
+
+  startCodeMasterGame(game: CodeMasterGame) {
+    console.log(game.winCombination);
+    game.turns[game.turns.length - 1].turnState = TurnState.InProgress;
   }
 
   updateSettings(settings: CodeMasterSettings) {
