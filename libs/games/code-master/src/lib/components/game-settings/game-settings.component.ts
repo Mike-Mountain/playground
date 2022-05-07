@@ -1,8 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CodeMasterService} from "../../services/code-master.service";
 import {CodeMasterSettings} from "../../models/code-master.model";
-import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
+import {colorOptions} from "../../models/color-options.const";
 
 @Component({
   selector: 'cdm-game-settings',
@@ -11,28 +12,11 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag
 })
 export class GameSettingsComponent implements OnInit {
 
-  @Input() settings: CodeMasterSettings | undefined;
-  @Output() close = new EventEmitter<boolean>();
+  @Input() settings: CodeMasterSettings | undefined | null;
+  @Output() close = new EventEmitter<CodeMasterSettings>();
 
   public settingsForm: FormGroup | undefined;
-  public allColorOptions = [
-    'yellow',
-    'green',
-    'forest',
-    'cyan',
-    'blue',
-    'indigo',
-    'purple',
-    'pink',
-    'red',
-    'orange',
-    'fire',
-    'peach',
-    'teal',
-    'olive',
-    'mauve',
-    'blank',
-  ]
+  public allColorOptions = colorOptions;
 
   constructor(private codeMasterService: CodeMasterService, private formBuilder: FormBuilder) {
   }
@@ -57,7 +41,9 @@ export class GameSettingsComponent implements OnInit {
   }
 
   closeModal() {
-    this.close.emit();
+    if (this.settings) {
+      this.close.emit(this.settings);
+    }
   }
 
   saveSettings() {
@@ -66,8 +52,7 @@ export class GameSettingsComponent implements OnInit {
       numberOfColors: this.settingsForm?.value.numberOfColors,
       colorOptions: this.settings?.colorOptions as string[]
     };
-    console.log(this.settings);
-    this.codeMasterService.createGameWithSettings(this.settings);
+    this.codeMasterService.createCodeMasterGame(this.settings);
     this.closeModal();
   }
 }

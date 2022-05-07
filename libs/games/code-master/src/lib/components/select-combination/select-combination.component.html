@@ -1,0 +1,49 @@
+<div class="card" *ngIf="settings">
+  <div class="card-content">
+    <h2 class="is-size-2 has-text-centered has-text-light">Combination</h2>
+    <hr class="w-85 mx-auto has-background-light">
+    <div class="color-options-form-field" *ngIf="settings.colorOptions">
+      <label class="settings-label w-100 flex-between">
+        <span>selected combination:</span>
+      </label>
+      <div
+        class="color-options"
+        id="combination"
+        cdkDropList
+        #selectedColors="cdkDropList"
+        [cdkDropListData]="combination"
+        [cdkDropListConnectedTo]="options"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <ng-container *ngFor="let color of combination; let idx = index">
+          <button class="color-block" [class]="'button-' + color.toLowerCase()" cdkDrag>
+            <small class="font-size-tiny is-capitalized">{{color}}</small>
+          </button>
+        </ng-container>
+      </div>
+      <hr class="w-85 mx-auto my-3 has-background-light">
+      <label class="settings-label w-100 flex-between">
+        <span>Color options:</span>
+      </label>
+      <div
+        class="color-options"
+        cdkDropList
+        id="colorOptions"
+        #options="cdkDropList"
+        [cdkDropListData]="settings.colorOptions"
+        [cdkDropListConnectedTo]="selectedColors"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <ng-container *ngFor="let color of settings.colorOptions">
+          <button class="color-block" [class]="'button-' + color" cdkDrag>
+            <small class="font-size-tiny is-capitalized">{{color}}</small>
+          </button>
+        </ng-container>
+      </div>
+    </div>
+    <div class="w-100 flex-around">
+      <button class="button is-danger w-45" (click)="close()">Cancel</button>
+      <button class="button is-primary w-45" (click)="close(true)">Save</button>
+    </div>
+  </div>
+</div>

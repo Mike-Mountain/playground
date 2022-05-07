@@ -28,11 +28,11 @@ export interface CodeMasterGame {
   settings: CodeMasterSettings;
 }
 
-export function createDefaultCMSettings() {
+export function createCMSettings(settings?: Partial<CodeMasterSettings>) {
   return {
-    colorOptions: ['red', 'orange', 'green', 'forest', 'cyan', 'blue', 'purple', 'blank'],
-    numberOfColors: 4,
-    numberOfTurns: 10,
+    colorOptions: settings?.colorOptions || ['red', 'yellow', 'green', 'forest', 'cyan', 'blue', 'purple', 'blank'],
+    numberOfColors: settings?.numberOfColors || 4,
+    numberOfTurns: settings?.numberOfTurns || 10,
   } as CodeMasterSettings;
 }
 
@@ -48,12 +48,13 @@ export function createCodeMasterTurn(settings: CodeMasterSettings): CodeMasterTu
   } as CodeMasterTurn;
 }
 
-export function createCodeMasterGame(settings?: CodeMasterSettings): CodeMasterGame {
-  const gameSettings = !!settings ? settings : createDefaultCMSettings();
+export function createCodeMasterGame(settings?: CodeMasterSettings, selectedCombo?: string[]): CodeMasterGame {
+  const gameSettings = !!settings ? settings : createCMSettings();
+  const winCombo = !!selectedCombo ? selectedCombo : createWinCombination(gameSettings);
   return {
     settings: gameSettings,
     turns: createEmptyArray(gameSettings.numberOfTurns).map(() => createCodeMasterTurn(gameSettings)),
-    winCombination: createWinCombination(gameSettings),
+    winCombination: winCombo,
     winState: WinState.InProgress
   } as CodeMasterGame
 }

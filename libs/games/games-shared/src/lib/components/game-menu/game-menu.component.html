@@ -1,0 +1,34 @@
+<section class="game-menu" *ngIf="gameMenuData">
+  <h1 class="is-size-1 has-text-centered has-text-light w-100">{{gameMenuData.game}}</h1>
+  <hr class="w-85 mx-auto has-background-light">
+  <div class="flex-center flex-column mt-2">
+    <button
+      class="button is-primary w-85 my-2"
+      *ngIf="gameMenuData.singlePlayer"
+      (click)="menuitemClicked('single')"
+    >
+      Single player
+    </button>
+    <button
+      class="button is-primary w-85 my-2"
+      *ngIf="gameMenuData.multiplayerLocal"
+      (click)="menuitemClicked('multi-l')"
+    >
+      Multiplayer (local)
+    </button>
+    <button
+      class="button is-primary w-85 my-2"
+      *ngIf="gameMenuData.multiPlayerOnline"
+      (click)="menuitemClicked('multi-o')"
+    >
+      Multiplayer (online)
+    </button>
+    <button
+      class="button is-primary w-85 my-2"
+      *ngIf="gameMenuData.settings"
+      (click)="menuitemClicked('settings')"
+    >
+      Settings
+    </button>
+  </div>
+</section>

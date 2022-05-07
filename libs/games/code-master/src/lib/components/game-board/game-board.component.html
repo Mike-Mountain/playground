@@ -46,7 +46,7 @@
 <div class="modal" [class.is-active]="showSettingsModal">
   <div class="modal-background" (click)="showSettingsModal=false"></div>
   <div class="modal-content px-5">
-    <cdm-game-settings [settings]="game?.settings" (close)="showSettingsModal = false"></cdm-game-settings>
+    <cdm-game-settings [settings]="game?.settings" (close)="createGame($event)"></cdm-game-settings>
   </div>
 </div>
 

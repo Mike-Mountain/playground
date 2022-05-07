@@ -13,6 +13,8 @@ import { GameSettingsComponent } from './components/game-settings/game-settings.
 import { ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HelpComponent } from './components/help/help.component';
+import { GamesGamesSharedModule } from '@playground/games/games-shared';
+import { SelectCombinationComponent } from './components/select-combination/select-combination.component';
 
 @NgModule({
   imports: [
@@ -23,6 +25,7 @@ import { HelpComponent } from './components/help/help.component';
     ]),
     LoadingModule,
     DragDropModule,
+    GamesGamesSharedModule,
   ],
   declarations: [
     CodeMasterContainerComponent,
@@ -34,6 +37,7 @@ import { HelpComponent } from './components/help/help.component';
     TurnCompleteComponent,
     GameSettingsComponent,
     HelpComponent,
+    SelectCombinationComponent,
   ],
 })
 export class GamesCodeMasterModule {}
