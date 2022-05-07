@@ -5,22 +5,42 @@ import {
   CodeMasterGame,
   CodeMasterSettings,
   CodeMasterTurn,
-  createCodeMasterGame
+  createCodeMasterGame, createCMSettings
 } from "../models/code-master.model";
-import {WinState} from "@playground/games/games-shared";
+import {PlayerMode, WinState} from "@playground/games/games-shared";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CodeMasterService {
 
-  private codeMasterGameSrc = new BehaviorSubject<CodeMasterGame>(createCodeMasterGame())
+  private codeMasterGameSrc = new BehaviorSubject<CodeMasterGame>(createCodeMasterGame());
+  private codeMasterSettingsSrc = new BehaviorSubject<CodeMasterSettings>(createCMSettings());
 
   constructor() {
   }
 
-  public select(): Observable<any> {
-    return this.codeMasterGameSrc.asObservable();
+  public selectGame(playerMode: PlayerMode, selectedCombo?: string[]): Observable<any> {
+    switch (playerMode) {
+      case PlayerMode.multiL:
+        if (selectedCombo) {
+          this.createGameWithCombo(selectedCombo);
+        }
+        return this.codeMasterGameSrc.asObservable();
+      case PlayerMode.multiO:
+        // Not Implemented
+      case PlayerMode.single:
+      default:
+        return this.codeMasterGameSrc.asObservable();
+    }
+  }
+
+  public selectSettings(): Observable<any> {
+    return this.codeMasterSettingsSrc.asObservable();
+  }
+
+  public updateSettings(settings: CodeMasterSettings) {
+    this.codeMasterSettingsSrc.next(createCMSettings(settings))
   }
 
   public setAndSortPins(turn: CodeMasterTurn, winCombination: string[]): CMPin[] {
@@ -72,6 +92,11 @@ export class CodeMasterService {
       state = WinState.InProgress;
     }
     return state;
+  }
+
+  public createGameWithCombo(combination: string[]) {
+    const settings = this.codeMasterSettingsSrc.getValue();
+    this.codeMasterGameSrc.next(createCodeMasterGame(settings, combination));
   }
 
   public createGameWithSettings(settings?: CodeMasterSettings) {

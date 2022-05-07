@@ -1,4 +1,11 @@
+<gs-game-menu
+  *ngIf="!codeMasterGame$"
+  [gameMenuData]="gameMenuData"
+  (itemClicked)="handleItemClick($event)"
+></gs-game-menu>
+
 <cdm-game-board
+  *ngIf="codeMasterGame$"
   [game]="codeMasterGame$ | async"
   (gameOver)="showGameOver($event)"
 ></cdm-game-board>
@@ -6,6 +13,29 @@
 <div class="modal" [class.is-active]="gameOver" *ngIf="codeMasterGame$ | async as game">
   <div class="modal-background"></div>
   <div class="modal-content px-5">
-    <cdm-game-over [winState]="winState" [winCombination]="game.winCombination" (playAgain)="refreshGame(game.settings)"></cdm-game-over>
+    <cdm-game-over
+      [winState]="winState"
+      [winCombination]="game.winCombination"
+      (playAgain)="refreshGame(game.settings)"
+    ></cdm-game-over>
+  </div>
+</div>
+
+
+<div class="modal" [class.is-active]="showSettings" *ngIf="codeMasterSettings$ | async">
+  <div class="modal-background"></div>
+  <div class="modal-content px-5">
+    <cdm-game-settings [settings]="codeMasterSettings$ | async" (close)="updateSettings($event)"></cdm-game-settings>
+  </div>
+</div>
+
+<div class="modal" [class.is-active]="showCombinationSelect">
+  <div class="modal-background"></div>
+  <div class="modal-content px-5">
+    <cdm-select-combination
+      [settings]="codeMasterSettings$ | async"
+      (selectedCombination)="createCodeMasterGame($event)"
+      (cancel)="showCombinationSelect = false"
+    ></cdm-select-combination>
   </div>
 </div>

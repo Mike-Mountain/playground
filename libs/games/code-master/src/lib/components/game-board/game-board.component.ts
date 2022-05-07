@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CMColor, CMPin, CodeMasterGame, CodeMasterTurn} from "../../models/code-master.model";
+import {CMColor, CMPin, CodeMasterGame, CodeMasterSettings, CodeMasterTurn} from "../../models/code-master.model";
 import {TurnState, WinState} from "@playground/games/games-shared";
 import {CodeMasterService} from "../../services/code-master.service";
 import {interval, takeWhile} from "rxjs";
@@ -14,6 +14,7 @@ export class GameBoardComponent implements OnInit {
   @Input() game: CodeMasterGame | undefined | null;
 
   @Output() gameOver = new EventEmitter<WinState>();
+  @Output() changeSettings = new EventEmitter<CodeMasterSettings>();
 
   public turnState = TurnState;
   public winState = WinState
@@ -91,5 +92,10 @@ export class GameBoardComponent implements OnInit {
   private canSelectColor(): boolean {
     const found = this.game?.turns.find(turn => turn.colors.find(color => color.selectable))
     return !found;
+  }
+
+  createGame(settings: CodeMasterSettings) {
+    this.showSettingsModal = false;
+    this.changeSettings.emit(settings);
   }
 }

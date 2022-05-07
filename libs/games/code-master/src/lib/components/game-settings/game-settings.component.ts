@@ -11,8 +11,8 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag
 })
 export class GameSettingsComponent implements OnInit {
 
-  @Input() settings: CodeMasterSettings | undefined;
-  @Output() close = new EventEmitter<boolean>();
+  @Input() settings: CodeMasterSettings | undefined | null;
+  @Output() close = new EventEmitter<CodeMasterSettings>();
 
   public settingsForm: FormGroup | undefined;
   public allColorOptions = [
@@ -57,7 +57,9 @@ export class GameSettingsComponent implements OnInit {
   }
 
   closeModal() {
-    this.close.emit();
+    if (this.settings) {
+      this.close.emit(this.settings);
+    }
   }
 
   saveSettings() {
@@ -66,7 +68,6 @@ export class GameSettingsComponent implements OnInit {
       numberOfColors: this.settingsForm?.value.numberOfColors,
       colorOptions: this.settings?.colorOptions as string[]
     };
-    console.log(this.settings);
     this.codeMasterService.createGameWithSettings(this.settings);
     this.closeModal();
   }
