@@ -16,7 +16,7 @@
         (cdkDropListDropped)="drop($event)"
       >
         <ng-container *ngFor="let color of combination; let idx = index">
-          <button class="color-block" [class]="'button-' + color.toLowerCase()" cdkDrag>
+          <button class="color-block" [class]="'button-' + color" cdkDrag>
             <small class="font-size-tiny is-capitalized">{{color}}</small>
           </button>
         </ng-container>

@@ -41,7 +41,7 @@ export class SelectCombinationComponent implements OnInit {
       if (event.container.id === 'combination') {
         // moving into combinations array
         if (this.settings && this.combination.length <= this.settings?.numberOfColors - 1) {
-          const color = event.item.element.nativeElement.innerText;
+          const color = event.item.element.nativeElement.innerText.toLowerCase();
           this.combination.push(color);
         }
       } else {
