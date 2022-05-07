@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CodeMasterSettings, createEmptyArray} from "../../models/code-master.model";
+import {CodeMasterSettings} from "../../models/code-master.model";
+import {createEmptyArray} from "@playground/games/games-shared";
 
 @Component({
   selector: 'cdm-help',

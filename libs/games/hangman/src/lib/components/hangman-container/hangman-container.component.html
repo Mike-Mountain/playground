@@ -1,4 +1,12 @@
 <hng-game-board
   [game]="hangmanGame$ | async"
-  (refreshGame)="playAgain()"
+  [selectedWordArray]="selectedWordArray"
+  (gameOver)="showGameOver($event)"
 ></hng-game-board>
+
+<div class="modal" [class.is-active]="gameOver" *ngIf="hangmanGame$ | async as game">
+  <div class="modal-background"></div>
+  <div class="modal-content px-5">
+    <hng-game-over [winState]="game.winState" [selectedWord]="selectedWordArray" [correctLetters]="game.correctLetters" (playAgain)="playAgain()"></hng-game-over>
+  </div>
+</div>

@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { GameBoardComponent } from './components/game-board/game-board.component';
 import { SharedSharedLibModule } from '@playground/shared/shared-lib';
 import { HangingManComponent } from './components/hanging-man/hanging-man.component';
+import { GameOverComponent } from './components/game-over/game-over.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { HangingManComponent } from './components/hanging-man/hanging-man.compon
     HangmanContainerComponent,
     GameBoardComponent,
     HangingManComponent,
+    GameOverComponent,
   ],
 })
 export class GamesHangmanModule {}

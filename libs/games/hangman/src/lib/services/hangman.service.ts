@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, catchError, filter, map, Observable, of, tap} from "rxjs";
-import {createHangmanGame, HangmanGame, HangmanSettings} from "@playground/hangman/entry/models/hangman.model";
+import {createHangmanGame, HangmanGame, HangmanSettings, Letter} from "@playground/hangman/entry/models/hangman.model";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({

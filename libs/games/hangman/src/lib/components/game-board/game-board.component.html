@@ -15,22 +15,6 @@
       </div>
     </ng-container>
   </div>
-  <div class="w-100 h-10 flex-center mb-1">
-    <button
-      *ngIf="game.winState !== winState.InProgress"
-      class="button is-info is-small w-65 mx-auto"
-      (click)="playAgain()"
-    >
-      Play Again
-    </button>
-    <button
-      *ngIf="game.winState === winState.InProgress"
-      class="button is-info is-small w-65 mx-auto"
-      (click)="endGame()"
-    >
-      End Game
-    </button>
-  </div>
 
   <div class="hangman-keyboard" *ngIf="game">
     <ng-container *ngFor="let letter of game.letters">
