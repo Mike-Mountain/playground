@@ -30,7 +30,7 @@ export interface CodeMasterGame {
 
 export function createCMSettings(settings?: Partial<CodeMasterSettings>) {
   return {
-    colorOptions: settings?.colorOptions || ['red', 'orange', 'green', 'forest', 'cyan', 'blue', 'purple', 'blank'],
+    colorOptions: settings?.colorOptions || ['red', 'yellow', 'green', 'forest', 'cyan', 'blue', 'purple', 'blank'],
     numberOfColors: settings?.numberOfColors || 4,
     numberOfTurns: settings?.numberOfTurns || 10,
   } as CodeMasterSettings;

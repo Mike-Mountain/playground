@@ -5,7 +5,8 @@ import {
   CodeMasterGame,
   CodeMasterSettings,
   CodeMasterTurn,
-  createCodeMasterGame, createCMSettings
+  createCMSettings,
+  createCodeMasterGame
 } from "../models/code-master.model";
 import {PlayerMode, WinState} from "@playground/games/games-shared";
 
@@ -21,18 +22,10 @@ export class CodeMasterService {
   }
 
   public selectGame(playerMode: PlayerMode, selectedCombo?: string[]): Observable<any> {
-    switch (playerMode) {
-      case PlayerMode.multiL:
-        if (selectedCombo) {
-          this.createGameWithCombo(selectedCombo);
-        }
-        return this.codeMasterGameSrc.asObservable();
-      case PlayerMode.multiO:
-        // Not Implemented
-      case PlayerMode.single:
-      default:
-        return this.codeMasterGameSrc.asObservable();
+    if (playerMode === PlayerMode.multiL && selectedCombo) {
+      this.createCodeMasterGame(this.codeMasterSettingsSrc.getValue(), selectedCombo);
     }
+    return this.codeMasterGameSrc.asObservable();
   }
 
   public selectSettings(): Observable<any> {
@@ -41,6 +34,10 @@ export class CodeMasterService {
 
   public updateSettings(settings: CodeMasterSettings) {
     this.codeMasterSettingsSrc.next(createCMSettings(settings))
+  }
+
+  public createCodeMasterGame(settings?: CodeMasterSettings, combination?: string[]) {
+    this.codeMasterGameSrc.next(createCodeMasterGame(settings, combination));
   }
 
   public setAndSortPins(turn: CodeMasterTurn, winCombination: string[]): CMPin[] {
@@ -92,14 +89,5 @@ export class CodeMasterService {
       state = WinState.InProgress;
     }
     return state;
-  }
-
-  public createGameWithCombo(combination: string[]) {
-    const settings = this.codeMasterSettingsSrc.getValue();
-    this.codeMasterGameSrc.next(createCodeMasterGame(settings, combination));
-  }
-
-  public createGameWithSettings(settings?: CodeMasterSettings) {
-    this.codeMasterGameSrc.next(createCodeMasterGame(settings));
   }
 }

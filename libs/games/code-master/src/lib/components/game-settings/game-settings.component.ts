@@ -68,7 +68,7 @@ export class GameSettingsComponent implements OnInit {
       numberOfColors: this.settingsForm?.value.numberOfColors,
       colorOptions: this.settings?.colorOptions as string[]
     };
-    this.codeMasterService.createGameWithSettings(this.settings);
+    this.codeMasterService.createCodeMasterGame(this.settings);
     this.closeModal();
   }
 }

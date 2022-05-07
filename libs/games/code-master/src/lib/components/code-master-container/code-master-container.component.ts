@@ -42,7 +42,7 @@ export class CodeMasterContainerComponent implements OnInit {
   refreshGame(settings?: CodeMasterSettings) {
     this.gameOver = false;
     if (this.playerMode === PlayerMode.single) {
-      this.codeMasterService.createGameWithSettings(settings);
+      this.codeMasterService.createCodeMasterGame(settings);
     } else {
       this.showCombinationSelect = true;
     }

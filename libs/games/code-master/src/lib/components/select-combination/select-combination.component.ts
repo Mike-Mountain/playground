@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CodeMasterSettings} from "../../models/code-master.model";
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
 
 @Component({
   selector: 'cdm-select-combination',
@@ -31,5 +32,22 @@ export class SelectCombinationComponent implements OnInit {
   close(saveSettings?: boolean) {
     saveSettings ? this.selectedCombination.emit(this.combination) : this.cancel.emit();
     this.combination = [];
+  }
+
+  drop(event: CdkDragDrop<string[], any>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      if (event.container.id === 'combination') {
+        // moving into combinations array
+        if (this.settings && this.combination.length <= this.settings?.numberOfColors - 1) {
+          const color = event.item.element.nativeElement.innerText;
+          this.combination.push(color);
+        }
+      } else {
+        // moving out of combinations array
+        this.combination.splice(event.currentIndex, 1);
+      }
+    }
   }
 }
