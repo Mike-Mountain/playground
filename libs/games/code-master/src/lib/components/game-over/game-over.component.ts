@@ -37,5 +37,6 @@ export class GameOverComponent implements OnInit {
         winCombination: this.winCombination
       }
     }
+    console.log(this.data);
   }
 }

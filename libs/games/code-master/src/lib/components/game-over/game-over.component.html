@@ -2,8 +2,8 @@
   <div class="card-content">
     <h2 class="is-size-2 has-text-centered has-text-primary">{{data.title}}</h2>
     <p class="has-text-centered has-text-primary">{{data.description}}</p>
-    <ng-container *ngIf="data.colorsTitle">
-      <p class="has-text-centered has-text-primary">{{data.colorsTitle}}</p>
+    <ng-container *ngIf="data.wordTitle">
+      <p class="has-text-centered has-text-primary">{{data.wordTitle}}</p>
       <div class="colors">
         <ng-container *ngFor="let color of winCombination">
           <div class="color-block flex-center" [class]="'button-' + color">
