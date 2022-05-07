@@ -1,4 +1,4 @@
-import {TurnState, WinState} from "@playground/games/games-shared";
+import {createEmptyArray, TurnState, WinState} from "@playground/games/games-shared";
 
 export type CMPin = 'black' | 'white' | 'blank';
 
@@ -56,11 +56,6 @@ export function createCodeMasterGame(settings?: CodeMasterSettings): CodeMasterG
     winCombination: createWinCombination(gameSettings),
     winState: WinState.InProgress
   } as CodeMasterGame
-}
-
-// UTILITY FUNCTIONS
-export function createEmptyArray(length: number): number[] {
-  return Array.from(Array(length).keys())
 }
 
 export function createWinCombination(settings: CodeMasterSettings): string[] {

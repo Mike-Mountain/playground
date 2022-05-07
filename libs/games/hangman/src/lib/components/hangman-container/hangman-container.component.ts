@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HangmanService} from "@playground/hangman/entry/services/hangman.service";
-import {HangmanGame} from "@playground/hangman/entry/models/hangman.model";
+import {HangmanGame, HangmanLetter} from "@playground/hangman/entry/models/hangman.model";
 import {Observable, tap} from "rxjs";
+import {WinState} from "@playground/games/games-shared";
 
 @Component({
   selector: 'hng-hangman-container',
@@ -10,11 +11,27 @@ import {Observable, tap} from "rxjs";
 })
 export class HangmanContainerComponent implements OnInit {
   public hangmanGame$: Observable<HangmanGame | undefined> | undefined;
+  public selectedWordArray: HangmanLetter[] = [];
+  public gameOver = false;
 
   constructor(private hangmanService: HangmanService) {}
 
   ngOnInit(): void {
-    this.hangmanGame$ = this.hangmanService.select();
+    this.hangmanGame$ = this.hangmanService.select().pipe(tap(game => {
+      if (game) {
+        this.selectedWordArray = [...game?.selectedWord].map(letter => {
+          return {
+            value: letter,
+            canShow: false,
+            isCorrect: false
+          }
+        });
+      }
+    }));
+  }
+
+  showGameOver(winState: WinState) {
+    this.gameOver = true;
   }
 
   playAgain() {

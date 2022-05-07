@@ -1,4 +1,14 @@
-import {AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnInit,
+  Renderer2,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
 import {WinState} from "@playground/games/games-shared";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 
@@ -8,8 +18,6 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   styleUrls: ['./hanging-man.component.scss'],
 })
 export class HangingManComponent implements OnInit, AfterViewInit {
-  @ViewChild('stickMan') stickMan: ElementRef | undefined;
-
   @Input() gameState: WinState | undefined;
   @Input() hangManSteps: {step: number, canShow: boolean}[] = [];
   public winState = WinState;
@@ -18,6 +26,7 @@ export class HangingManComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    // For debugging
     // this.hangManSteps.forEach(step => step.canShow = true)
   }
 

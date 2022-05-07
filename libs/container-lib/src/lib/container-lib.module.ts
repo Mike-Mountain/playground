@@ -1,13 +1,14 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {LayoutContainerComponent} from './components/layout-container/layout-container.component';
-import {LayoutModule} from "@playground/shared/shared-lib";
 import {RouterModule} from "@angular/router";
+import {NavbarComponent, SidebarComponent, LayoutContainerComponent} from "./components";
 
 @NgModule({
-  imports: [CommonModule, LayoutModule, RouterModule],
+  imports: [CommonModule, RouterModule],
   declarations: [
-    LayoutContainerComponent
+    LayoutContainerComponent,
+    SidebarComponent,
+    NavbarComponent
   ],
   exports: [
     LayoutContainerComponent

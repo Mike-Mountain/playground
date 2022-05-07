@@ -1,18 +1,17 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {HangmanGame, HangmanLetter, Letter} from "../../models/hangman.model";
-import {WinState} from "@playground/games/games-shared";
-import {createEmptyArray} from "@playground/code-master/entry/models/code-master.model";
+import {createEmptyArray, WinState} from "@playground/games/games-shared";
 
 @Component({
   selector: 'hng-game-board',
   templateUrl: './game-board.component.html',
   styleUrls: ['./game-board.component.scss']
 })
-export class GameBoardComponent implements OnInit, OnChanges {
-  @Input() game: HangmanGame | undefined | null
-  @Output() refreshGame = new EventEmitter();
+export class GameBoardComponent implements OnInit {
+  @Input() game: HangmanGame | undefined | null;
+  @Input() selectedWordArray: HangmanLetter[] = [];
+  @Output() gameOver = new EventEmitter<WinState>();
 
-  public selectedWordArray: HangmanLetter[] = [];
   public hangManSteps: {step: number, canShow: boolean}[];
   public winState = WinState;
 
@@ -25,31 +24,7 @@ export class GameBoardComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['game'].currentValue) {
-      this.selectedWordArray = [...changes['game'].currentValue.selectedWord].map(letter => {
-        return {
-          value: letter,
-          canShow: false,
-          isCorrect: false
-        }
-      });
-      // Reset hangman image
-      this.hangManSteps.forEach(step => step.canShow = false);
-    }
-  }
-
   ngOnInit(): void {
-    console.log(this.game);
-    if (this.game) {
-      this.selectedWordArray = [...this.game.selectedWord].map(letter => {
-        return {
-          value: letter,
-          canShow: false,
-          isCorrect: false
-        }
-      });
-    }
   }
 
   selectLetter(letter: Letter) {
@@ -64,8 +39,9 @@ export class GameBoardComponent implements OnInit, OnChanges {
             selectedLetter.isCorrect = true;
           }
         })
-        if (this.game.correctLetters.length === this.game.selectedWord.length) {
+        if (this.game.correctLetters.length === this.game.selectedWord.length - 1) {
           this.game.winState = WinState.Won;
+          this.showGameOver();
         }
       } else {
         this.game.incorrectLetters.push(letter.value);
@@ -74,19 +50,13 @@ export class GameBoardComponent implements OnInit, OnChanges {
 
       if (this.game.incorrectLetters.length === 12) {
         this.game.winState = WinState.Lost;
+        this.showGameOver();
         this.selectedWordArray.forEach(letter => letter.canShow = true);
       }
     }
   }
 
-  playAgain() {
-    this.refreshGame.emit();
-  }
-
-  endGame() {
-    if (this.game) {
-      this.game.winState = WinState.Lost;
-      this.selectedWordArray.forEach(letter => letter.canShow = true);
-    }
+  showGameOver() {
+    this.gameOver.emit(this.game?.winState);
   }
 }
