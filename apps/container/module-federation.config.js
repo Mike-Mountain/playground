@@ -1,4 +1,4 @@
 module.exports = {
   name: 'container',
-  remotes: ['games'],
+  remotes: ['games', 'tools'],
 };
