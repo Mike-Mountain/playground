@@ -1,13 +1,67 @@
-<nav class="navbar flex-center" role="navigation" aria-label="main navigation">
-  <div class="w-50 h-100 flex-start">
-    <a role="button" class="navbar-burger ml-0" (click)="toggle()">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="w-50 h-100 flex-end">
-    <div class="h-100 flex-center">
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <a role="button" class="navbar-burger ml-0" (click)="toggle()">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </a>
+  <div id="navbarBasicExample" class="navbar-menu flex-align-center">
+    <div class="navbar-start">
+      <a class="navbar-item">
+        Home
+      </a>
+
+      <div class="navbar-item has-dropdown-up" [class.is-active]="dropUps.games === true">
+        <a class="navbar-link" (click)="toggleDropUp('games')">
+          Games
+        </a>
+        <div class="navbar-dropdown" (click)="toggleDropUp('games')">
+          <a
+            class="navbar-item"
+            routerLink="/games/code-master"
+            routerLinkActive="link-active"
+            [routerLinkActiveOptions]="{exact: true}"
+          >
+            Code Master
+          </a>
+          <a
+            class="navbar-item"
+            routerLink="/games/hangman"
+            routerLinkActive="link-active"
+            [routerLinkActiveOptions]="{exact: true}"
+          >
+            Hangman
+          </a>
+        </div>
+      </div>
+
+      <div class="navbar-item is-active has-dropdown-up" [class.is-active]="dropUps.tools">
+        <a class="navbar-link" (click)="toggleDropUp('tools')">
+          Tools
+        </a>
+        <div class="navbar-dropdown" (click)="toggleDropUp('tools')">
+          <a
+            class="navbar-item"
+            routerLink="/tools/rxjs-query-builder"
+            routerLinkActive="link-active"
+            [routerLinkActiveOptions]="{exact: true}"
+          >
+            RXJS Query Builder
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item p-0">
+        <div class="buttons">
+          <a class="button is-primary">
+            <strong>Sign up</strong>
+          </a>
+          <a class="button is-light">
+            Log in
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </nav>

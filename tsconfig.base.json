@@ -21,7 +21,7 @@
       "@playground/games/hangman": ["libs/games/hangman/src/index.ts"],
       "@playground/shared/shared-lib": ["libs/shared/shared-lib/src/index.ts"],
       "@playground/tools/rxjs-query-builder": ["libs/tools/rxjs-query-builder/src/index.ts"],
-      "@playground/tools/rxjs-query-builder/entry/*": ["libs/tools/rxjs-query-builder/src/lib/*"],
+      "@playground/rxjs-query-builder/entry/*": ["libs/tools/rxjs-query-builder/src/lib/*"],
       "@playground/games-shared/entry/*": ["libs/games/games-shared/src/lib/*"],
       "@playground/hangman/entry/*": ["libs/games/hangman/src/lib/*"],
       "@playground/code-master/entry/*": ["libs/games/code-master/src/lib/*"]
