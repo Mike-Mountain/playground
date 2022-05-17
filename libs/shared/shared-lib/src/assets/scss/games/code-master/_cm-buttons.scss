@@ -3,6 +3,7 @@
 .color-block {
   @extend %game-block;
   min-height: 2rem;
+  background-color: transparent;
 }
 
 .complete-turn {

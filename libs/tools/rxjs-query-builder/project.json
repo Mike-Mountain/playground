@@ -2,7 +2,7 @@
   "projectType": "library",
   "root": "libs/tools/rxjs-query-builder",
   "sourceRoot": "libs/tools/rxjs-query-builder/src",
-  "prefix": "playground",
+  "prefix": "query",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
