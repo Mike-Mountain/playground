@@ -1,8 +1,8 @@
 <div
   cdkDropList
-  cdkDropListConnectedTo="savedDataBlocks"
+  [cdkDropListConnectedTo]="language === 'json' ? 'savedDataBlocks' : 'savedCodeBlocks'"
   class="model-builder h-100"
-  id="dataBuilder"
+  [id]="language === 'json' ? 'dataBuilder' : 'codeBuilder'"
   (cdkDropListDropped)="drop($event)"
   *ngIf="codeBlock"
 >
@@ -13,8 +13,8 @@
   <div class="h-82">
     <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="codeBlock.data"></ngx-monaco-editor>
   </div>
-  <div class="h-10 flex-between">
-    <button class="button is-primary w-40 mx-auto is-small mb-1" (click)="saveDataBlock()">Save Data</button>
-    <button class="button is-primary w-40 mx-auto is-small mb-1" (click)="saveDataBlock(true)">Add to Query</button>
+  <div class="h-10 flex-center">
+    <button class="button is-primary w-40 mx-auto is-small mb-1" (click)="saveCodeBlock()">Save Data</button>
+    <button class="button is-primary w-40 mx-auto is-small mb-1" (click)="saveCodeBlock(true)">Add to Query</button>
   </div>
 </div>

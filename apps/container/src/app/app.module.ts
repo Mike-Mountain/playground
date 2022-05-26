@@ -6,13 +6,17 @@ import { RouterModule } from '@angular/router';
 import { ContainerLibModule } from '@playground/container-lib';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import {MonacoEditorModule} from "@materia-ui/ngx-monaco-editor";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     BrowserAnimationsModule,
+    MonacoEditorModule,
     RouterModule.forRoot(
       [
         {

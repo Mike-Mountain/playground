@@ -2,6 +2,7 @@
 @import "variables/colors";
 @import "bulma/bulma";
 @import "games/index";
+@import "shame";
 
 body {
   background-color: var(--background);
@@ -13,4 +14,17 @@ body {
 
 .modal-background {
   background-color: rgba(var(--containerValues), .5);
+}
+
+.editor-container {
+  overflow: visible !important;
+  border: 1px solid var(--info);
+}
+
+.monaco-editor, .monaco-editor-background, .monaco-editor .inputarea.ime-input {
+  background-color: #292D3E !important;
+}
+
+.monaco-editor .margin {
+  background-color: #292D3E !important;
 }

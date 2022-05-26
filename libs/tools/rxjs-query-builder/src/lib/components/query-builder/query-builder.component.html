@@ -1,0 +1,57 @@
+<figure
+  cdkDropList
+  cdkDropListConnectedTo="savedDataBlocks"
+  class="query-builder"
+  id="queryBuilder"
+  (cdkDropListDropped)="dropDataBlock($event)"
+>
+  <div class="query-display-container" *ngIf="dataBlocks[0]">
+    <div class="dropdown is-hoverable h-100">
+      <div class="color-block button-blue text-uppercase dropdown-trigger">
+        {{dataBlocks[0].title}}
+      </div>
+      <div class="dropdown-menu">
+        <div class="dropdown-content">
+          <pre>{{dataBlocks[0]?.data}}</pre>
+        </div>
+      </div>
+    </div>
+    <div class="period">.</div>
+    <div class="color-block button-purple text-uppercase">
+      <p>pipe(</p>
+      <div
+        cdkDropList
+        cdkDropListConnectedTo="operators"
+        class="w-100 h-100 flex-start"
+        id="pipeBuilder"
+        (cdkDropListDropped)="dropOperator($event)"
+      >
+        <ng-container *ngFor="let operator of operators; let idx = index">
+          <div class="color-block button-fire text-uppercase flex-justify-start" *ngIf="operator">
+            <p>{{operator}}((<span class="text-lowercase">data:</span> {{dataBlocks[idx].title}}) =></p>
+            <div
+              cdkDropList
+              cdkDropListConnectedTo="savedCodeBlocks"
+              class="mw-1 h-100 flex-start"
+              id="codeArray"
+              (cdkDropListDropped)="dropCodeBlock($event)"
+            >
+              <div class="dropdown is-hoverable h-100">
+                <div class="color-block button-green text-uppercase dropdown-trigger" *ngIf="codeBlocks[0]">
+                  <p class="text-lowercase">{{codeBlocks[0].title}}(data)</p>
+                </div>
+                <div class="dropdown-menu">
+                  <div class="dropdown-content">
+                    <pre class="text-default">{{codeBlocks[0].data}}</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="period" *ngIf="idx > 0 && idx < operators.length">,</div>
+        </ng-container>
+      </div>
+      <p>)</p>
+    </div>
+  </div>
+</figure>

@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/container",
         "index": "apps/container/src/index.html",
@@ -16,9 +18,16 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/container/src/favicon.ico",
-          "apps/container/src/assets"
+          "apps/container/src/assets",
+          {
+            "glob": "**/*",
+            "input": "node_modules/monaco-editor",
+            "output": "assets/monaco-editor/"
+          }
         ],
-        "styles": ["apps/container/src/styles.scss"],
+        "styles": [
+          "apps/container/src/styles.scss"
+        ],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/container/webpack.config.js"
@@ -93,7 +102,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/container"],
+      "outputs": [
+        "coverage/apps/container"
+      ],
       "options": {
         "jestConfig": "apps/container/jest.config.ts",
         "passWithNoTests": true
@@ -102,7 +113,11 @@
     "serve-mfe": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "commands": ["nx serve games", "nx serve container", "nx serve tools"]
+        "commands": [
+          "nx serve games",
+          "nx serve container",
+          "nx serve tools"
+        ]
       }
     },
     "serve-network": {
