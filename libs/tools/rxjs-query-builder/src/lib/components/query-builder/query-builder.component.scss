@@ -1,0 +1,43 @@
+.query-builder {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.query-display-container {
+  height: 55%;
+  width: max-content;
+  margin: 0;
+  padding: .5rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.color-block {
+  min-height: 50%;
+  min-width: 5rem;
+  max-width: max-content;
+  padding: .5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none !important;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 40%);
+}
+
+.period {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+pre {
+  border-radius: 10px;
+  padding: .5rem !important;
+  color: white;
+  max-height: 22rem;
+}

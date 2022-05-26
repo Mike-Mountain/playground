@@ -5,10 +5,39 @@
     <nav class="menu">
       <p class="menu-label">Games</p>
       <ul class="menu-list">
-        <li><a class="menu-item" routerLink="/games/code-master" routerLinkActive="link-active"
-               [routerLinkActiveOptions]="{exact: true}">Code Master</a></li>
-        <li><a class="menu-item" routerLink="/games/hangman" routerLinkActive="link-active"
-               [routerLinkActiveOptions]="{exact: true}">Hangman</a></li>
+        <li>
+          <a
+            class="menu-item"
+            routerLink="/games/code-master"
+            routerLinkActive="link-active"
+            [routerLinkActiveOptions]="{exact: true}"
+          >
+            Code Master
+          </a>
+        </li>
+        <li>
+          <a
+            class="menu-item"
+            routerLink="/games/hangman"
+            routerLinkActive="link-active"
+            [routerLinkActiveOptions]="{exact: true}"
+          >
+            Hangman
+          </a>
+        </li>
+      </ul>
+      <p class="menu-label mt-2">Tools</p>
+      <ul class="menu-list">
+        <li>
+          <a
+            class="menu-item"
+            routerLink="/tools/rxjs-query-builder"
+            routerLinkActive="link-active"
+            [routerLinkActiveOptions]="{exact: true}"
+          >
+            RXJS Query Builder
+          </a>
+        </li>
       </ul>
     </nav>
   </div>

@@ -4,8 +4,21 @@
   background-color: var(--container);
 }
 
-.navbar-item {
-  padding: 0;
+.navbar-item, .navbar-link {
+  color: white;
+  &:hover:not(.link-active) {
+    background-color: var(--container);
+    color: var(--info)
+  }
+}
+
+.navbar-dropdown {
+  background-color: var(--container);
+  margin-bottom: .275rem;
+  .navbar-item:hover:not(.link-active) {
+    background-color: var(--container);
+    color: var(--info)
+  }
 }
 
 .button {
@@ -16,4 +29,18 @@
   span {
     background-color: var(--primary);
   }
+}
+
+.link-active {
+  background-color: var(--background);
+  color: var(--primary);
+  border-left-color: var(--primary);
+  box-shadow: inset 0 4px 8px rgb(0 0 0 / 20%), 0 0 0 1px rgb(0 0 0 / 10%);
+  &:hover {
+    color: var(--primary) !important;
+  }
+}
+
+.buttons:last-child {
+  margin-bottom: 0 !important;
 }

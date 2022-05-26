@@ -1,0 +1,86 @@
+<section class="query-builder-container">
+  <div class="query-builder-header">
+    <h3 class="is-size-3">RXJS QUERY BUILDER</h3>
+  </div>
+  <div class="card">
+    <div class="card-header flex-center">
+      <h5 class="is-size-5 has-text-light">Saved Code</h5>
+    </div>
+    <div class="card-content h-95 has-text-light">
+      <div
+        cdkDropList
+        [cdkDropListConnectedTo]="['codeBuilder', 'codeArray']"
+        class="card-content h-95 has-text-light"
+        id="savedCodeBlocks"
+      >
+        <ng-container *ngFor="let code of savedCodeBlocks; let idx = index">
+          <button class="color-block color-block-shadow w-30 h-10 m-1" cdkDrag [cdkDragData]="code">{{code.title}}</button>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header flex-center">
+      <h5 class="is-size-5 has-text-light">Query</h5>
+    </div>
+    <div class="card-content h-95 has-text-light">
+      <query-query-builder (output)="showOutput($event)"></query-query-builder>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header flex-center">
+      <h5 class="is-size-5 has-text-light">Saved Data</h5>
+    </div>
+    <div
+      cdkDropList
+      [cdkDropListConnectedTo]="['dataBuilder', 'queryBuilder']"
+      class="card-content h-95 has-text-light"
+      id="savedDataBlocks"
+    >
+      <ng-container *ngFor="let data of savedDataBlocks; let idx = index">
+        <button class="color-block color-block-shadow w-20 h-10 m-1" cdkDrag [cdkDragData]="data">{{data.title}}</button>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header flex-center">
+      <h5 class="is-size-5 has-text-light">Code Editor</h5>
+    </div>
+    <div class="card-content h-95 has-text-light p-data-builder">
+      <query-code-editor [codeBlock]="selectedCodeBlock" [language]="'javascript'" (saveBlock)="saveCodeBlock($event)"></query-code-editor>
+    </div>
+  </div>
+
+  <div class="center-grid">
+    <div class="card">
+      <div class="card-header flex-center">
+        <h5 class="is-size-5 has-text-light">Operators</h5>
+      </div>
+      <div class="card-content h-95 has-text-light">
+        <query-operators></query-operators>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header flex-center">
+        <h5 class="is-size-5 has-text-light">Output</h5>
+      </div>
+      <div class="card-content h-95 has-text-light">
+        <ng-container *ngIf="output | async as data">
+          <pre class='output'>{{data.data}}</pre>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header flex-center">
+      <h5 class="is-size-5 has-text-light">Data Builder</h5>
+    </div>
+    <div class="card-content h-95 has-text-light p-data-builder">
+      <query-code-editor [codeBlock]="selectedDataBlock" [language]="'json'" (saveBlock)="saveDataBlock($event)"></query-code-editor>
+    </div>
+  </div>
+</section>

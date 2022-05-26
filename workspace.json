@@ -9,6 +9,9 @@
     "games-e2e": "apps/e2e/games-e2e",
     "games-shared": "libs/games/games-shared",
     "hangman": "libs/games/hangman",
-    "shared-lib": "libs/shared/shared-lib"
+    "rxjs-query-builder": "libs/tools/rxjs-query-builder",
+    "shared-lib": "libs/shared/shared-lib",
+    "tools": "apps/tools",
+    "tools-e2e": "apps/e2e/tools-e2e"
   }
 }

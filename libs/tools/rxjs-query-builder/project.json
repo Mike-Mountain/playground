@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/tools/rxjs-query-builder",
+  "sourceRoot": "libs/tools/rxjs-query-builder/src",
+  "prefix": "query",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/tools/rxjs-query-builder"],
+      "options": {
+        "jestConfig": "libs/tools/rxjs-query-builder/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/tools/rxjs-query-builder/**/*.ts",
+          "libs/tools/rxjs-query-builder/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

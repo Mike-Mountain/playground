@@ -1,0 +1,10 @@
+<div
+  cdkDropList
+  cdkDropListConnectedTo="pipeBuilder"
+  class="query-operators"
+  id="operators"
+>
+  <ng-container *ngFor="let operator of operators">
+    <button class="color-block color-block-shadow flex-center" cdkDrag [cdkDragData]="operator">{{operator}}</button>
+  </ng-container>
+</div>

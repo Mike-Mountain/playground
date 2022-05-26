@@ -1,0 +1,20 @@
+<div
+  cdkDropList
+  [cdkDropListConnectedTo]="language === 'json' ? 'savedDataBlocks' : 'savedCodeBlocks'"
+  class="model-builder h-100"
+  [id]="language === 'json' ? 'dataBuilder' : 'codeBuilder'"
+  (cdkDropListDropped)="drop($event)"
+  *ngIf="codeBlock"
+>
+  <div class="h-8 w-90 mx-auto flex-center pl-1 pt-1">
+    <label class="w-15 label m-0 has-text-light">Title:</label>
+    <input type="text" class="w-85 playground-input" [(ngModel)]="codeBlock.title">
+  </div>
+  <div class="h-82">
+    <ngx-monaco-editor [options]="editorOptions" [(ngModel)]="codeBlock.data"></ngx-monaco-editor>
+  </div>
+  <div class="h-10 flex-center">
+    <button class="button is-primary w-40 mx-auto is-small mb-1" (click)="saveCodeBlock()">Save Data</button>
+    <button class="button is-primary w-40 mx-auto is-small mb-1" (click)="saveCodeBlock(true)">Add to Query</button>
+  </div>
+</div>
